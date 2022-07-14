@@ -57,17 +57,19 @@ function App() {
   return (
     <div className="App">
       <article>
-        <div className="selectedContainer flex flex-row">
-          {selectedColors
-            .map((hex, index) => (
-              <div
-                key={index}
-                className="selectedBox"
-                style={{backgroundColor: hex}}
-                onClick={() => { removeSelected(index) }}>
-              </div>
-            ))}
-        </div>
+        <table className="selectedContainer flex flex-row">
+          <tr>
+            {selectedColors
+              .map((hex, index) => (
+                <td
+                  key={index}
+                  className="selectedBox"
+                  style={{backgroundColor: hex}}
+                  onClick={() => { removeSelected(index) }}>
+                </td>
+              ))}
+          </tr>
+        </table>
         <div id="pallete" className="flex flex-row flex-wrap">
           {pallete.map(hex => <RoundButton key={hex} hex={hex} addSelected={addSelected} />)}
         </div>

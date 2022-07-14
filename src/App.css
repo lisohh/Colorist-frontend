@@ -6,10 +6,10 @@
   padding: 0.2rem;
   font-size: 0.8rem;
   border: none;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 25%;
-  margin: 0.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 40%;
+  margin: 0.4rem;
 }
 
 .selectedBox {
@@ -18,9 +18,16 @@
   border: 1px solid lightgray;
 }
 
-.flexRow {
+.flex {
   display: flex;
+}
+
+.flex-fow {
   flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .selectedContainer {

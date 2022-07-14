@@ -4,14 +4,17 @@ This is a React project bootstrapped with [bun](https://bun.sh/).
 
 ## Getting Started
 
-### Cloning the repo
+### install
 
 ```sh
-bun create react ./react-bun-app
+bun install
 ```
 
-### Development
+### 새 패키지 추가하기
+package.json에 원하는 패키지를 넣습니다.
+bun install을 다시 실행합니다.
 
+### Development
 First, run the development server.
 
 ```

@@ -1,7 +1,7 @@
 .App {
   padding: 2rem;
 }
-
+/* 팔레트 색깔 버튼 css */
 .roundButton {
   padding: 0.2rem;
   font-size: 0.8rem;
@@ -32,4 +32,12 @@
 
 .selectedContainer {
   margin-bottom: 1rem;
+}
+
+textarea#color-selection {
+  height: 8rem;
+}
+
+textarea#explanation {
+  height: 14rem;
 }

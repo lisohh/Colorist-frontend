@@ -1,6 +1,19 @@
 .App {
   padding: 2rem;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-fow {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 /* 팔레트 색깔 버튼 css */
 .roundButton {
   padding: 0.2rem;
@@ -18,26 +31,62 @@
   border: 1px solid lightgray;
 }
 
-.flex {
-  display: flex;
-}
-
-.flex-fow {
-  flex-direction: row;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 .selectedContainer {
   margin-bottom: 1rem;
+  width: 50%;
 }
 
+div#pallete {
+  margin: 1rem 0;
+}
+
+div.quiz-paragraph {
+  padding-left: 1rem;
+}
+
+a.category {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: small;
+}
+
+h1#q,
+h1#quiz-text {
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 0.3rem;
+}
+
+p#allColor {
+  margin-left: 0.2rem;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 0.6rem;
+}
+label {
+  margin-left: 0.2rem;
+  font-weight: bold;
+}
+
+label#explanation {
+  font-size: 24px;
+}
 textarea#color-selection {
-  height: 8rem;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+  border-style: none;
 }
 
 textarea#explanation {
   height: 14rem;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+  border-style: none;
+}
+
+button#save-button {
+  background-color: #ffdc4f;
+  color: black;
+  border-color: #ffdc4f;
 }

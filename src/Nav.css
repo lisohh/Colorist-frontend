@@ -1,0 +1,17 @@
+nav {
+  background-color: #ffdc4f;
+}
+
+a.login {
+  position: relative;
+  right: 2rem;
+}
+
+a.menu {
+  position: relative;
+  left: 2rem;
+}
+
+img {
+  width: 1.5rem;
+}

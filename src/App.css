@@ -14,30 +14,36 @@
   flex-wrap: wrap;
 }
 
+div#pallete {
+  margin: 1.5rem 0;
+  justify-content: center;
+}
+
+div.grid {
+  display: grid;
+  gridtemplaterows: 1fr;
+  gridtemplatecolumns: 1fr 1fr 1fr 1fr;
+}
 /* 팔레트 색깔 버튼 css */
 .roundButton {
   padding: 0.2rem;
   font-size: 0.8rem;
   border: none;
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 40%;
+  width: 8rem;
+  height: 6rem;
+  border-radius: 2rem;
   margin: 0.4rem;
 }
 
-.selectedBox {
+td {
   width: 2rem;
   height: 10rem;
   border: 1px solid lightgray;
 }
 
 .selectedContainer {
+  justify-content: center;
   margin-bottom: 1rem;
-  width: 50%;
-}
-
-div#pallete {
-  margin: 1rem 0;
 }
 
 div.quiz-paragraph {

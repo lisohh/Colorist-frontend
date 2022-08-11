@@ -83,8 +83,11 @@ function App() {
           <a className="category" href="">
             2022년도 - 제품
           </a>
-          <h1 id="q">Q</h1>
-          <h1 id="quiz-text">"문제1번 내용"</h1>
+          <h1 id="q">Q.</h1>
+          <h1 id="quiz-text">
+            따뜻하고 풍요로운 이미지와 차갑고 쓸쓸한 이미지 두가지를 연출해
+            보세요.
+          </h1>
           <h6 id="condition">(3색 이상, 10칸 이상 배색)</h6>
         </div>
         <table className="selectedContainer flex flex-row">
@@ -110,17 +113,66 @@ function App() {
         <div id="pallete" className="flex flex-row flex-wrap">
           {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
           {pallete.map((hex) => (
-            <button
-              onClick={() => addSelected(hex)}
-              className="roundButton"
-              style={{ backgroundColor: hex }}
-            >
-              {hex}
-            </button>
+            <div className="grid">
+              <button
+                onClick={() => addSelected(hex)}
+                className="roundButton"
+                style={{ backgroundColor: hex }}
+              >
+                {hex}
+              </button>
+            </div>
           ))}
         </div>
         {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
         {/* <input type="text" /> */}
+        <p id="allColor">주보강 기입</p>
+        <label htmlFor="main-color">주조색</label>
+        <textarea
+          id="color-selection"
+          placeholder={"주조색:"}
+          value={mainColor}
+          // change event의 target인 textarea의 새로 변경된 값을
+          // react의 colorSelection 상태에 세팅
+          // 값을 동기화해주는 거에요.
+          // https://beta.reactjs.org/learn/reacting-to-input-with-state
+          onChange={(event) => setMainColor(event.target.value)}
+        />
+        <label htmlFor="sub-color">보조색</label>
+        <textarea
+          id="color-selection"
+          placeholder={"보조색:"}
+          value={subColor}
+          // change event의 target인 textarea의 새로 변경된 값을
+          // react의 subColor 상태에 세팅
+          // 값을 동기화해주는 거에요.
+          // https://beta.reactjs.org/learn/reacting-to-input-with-state
+          onChange={(event) => setSubColor(event.target.value)}
+        />
+        <label htmlFor="point-color">강조색</label>
+        <textarea
+          id="color-selection"
+          placeholder={"강조색:"}
+          value={pointColor}
+          // change event의 target인 textarea의 새로 변경된 값을
+          // react의 pointColor 상태에 세팅
+          // 값을 동기화해주는 거에요.
+          // https://beta.reactjs.org/learn/reacting-to-input-with-state
+          onChange={(event) => setPointColor(event.target.value)}
+        />
+        <label htmlFor="explanation" id="explanation">
+          배색 설명
+        </label>
+        <textarea
+          id="explanation"
+          placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
+          value={explanation}
+          // change event의 target인 textarea의 새로 변경된 값을
+          // react의 colorSelection 상태에 세팅
+          // 값을 동기화해주는 거에요.
+          // https://beta.reactjs.org/learn/reacting-to-input-with-state
+          onChange={(event) => setExplanation(event.target.value)}
+        />
         <p id="allColor">주보강 기입</p>
         <label htmlFor="main-color">주조색</label>
         <textarea

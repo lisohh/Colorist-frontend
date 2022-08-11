@@ -14,16 +14,18 @@
   flex-wrap: wrap;
 }
 
+div#pallete-box {
+  width: fit-content;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #e6e6e6;
+}
+
 div#pallete {
+  padding: 1rem 0;
   margin: 1.5rem 0;
   justify-content: center;
 }
 
-div.grid {
-  display: grid;
-  gridtemplaterows: 1fr;
-  gridtemplatecolumns: 1fr 1fr 1fr 1fr;
-}
 /* 팔레트 색깔 버튼 css */
 .roundButton {
   padding: 0.2rem;
@@ -36,9 +38,14 @@ div.grid {
 }
 
 td {
-  width: 2rem;
+  width: 0.5rem;
   height: 10rem;
   border: 1px solid lightgray;
+}
+
+td:first-child,
+td:last-child {
+  border-radius: 2rem;
 }
 
 .selectedContainer {
@@ -77,7 +84,7 @@ label {
 label#explanation {
   font-size: 24px;
 }
-textarea#color-selection {
+input#color-selection {
   height: 3rem;
   border-radius: 10px;
   background-color: #e6e6e6;

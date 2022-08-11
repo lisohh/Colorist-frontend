@@ -110,10 +110,10 @@ function App() {
             ))}
           </tr>
         </table>
-        <div id="pallete" className="flex flex-row flex-wrap">
-          {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
-          {pallete.map((hex) => (
-            <div className="grid">
+        <div id="pallete-box">
+          <div id="pallete" className="flex flex-row flex-wrap">
+            {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
+            {pallete.map((hex) => (
               <button
                 onClick={() => addSelected(hex)}
                 className="roundButton"
@@ -121,25 +121,25 @@ function App() {
               >
                 {hex}
               </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
         {/* <input type="text" /> */}
         <p id="allColor">주보강 기입</p>
         <label htmlFor="main-color">주조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"주조색:"}
           value={mainColor}
           // change event의 target인 textarea의 새로 변경된 값을
-          // react의 colorSelection 상태에 세팅
+          // react의 mainColor 상태에 세팅
           // 값을 동기화해주는 거에요.
           // https://beta.reactjs.org/learn/reacting-to-input-with-state
           onChange={(event) => setMainColor(event.target.value)}
         />
         <label htmlFor="sub-color">보조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"보조색:"}
           value={subColor}
@@ -150,7 +150,7 @@ function App() {
           onChange={(event) => setSubColor(event.target.value)}
         />
         <label htmlFor="point-color">강조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"강조색:"}
           value={pointColor}
@@ -168,14 +168,14 @@ function App() {
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
           value={explanation}
           // change event의 target인 textarea의 새로 변경된 값을
-          // react의 colorSelection 상태에 세팅
+          // react의 explanation 상태에 세팅
           // 값을 동기화해주는 거에요.
           // https://beta.reactjs.org/learn/reacting-to-input-with-state
           onChange={(event) => setExplanation(event.target.value)}
         />
         <p id="allColor">주보강 기입</p>
         <label htmlFor="main-color">주조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"주조색:"}
           value={mainColor}
@@ -186,7 +186,7 @@ function App() {
           onChange={(event) => setMainColor(event.target.value)}
         />
         <label htmlFor="sub-color">보조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"보조색:"}
           value={subColor}
@@ -197,7 +197,7 @@ function App() {
           onChange={(event) => setSubColor(event.target.value)}
         />
         <label htmlFor="point-color">강조색</label>
-        <textarea
+        <input
           id="color-selection"
           placeholder={"강조색:"}
           value={pointColor}

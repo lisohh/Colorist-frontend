@@ -23,19 +23,15 @@ Scenario: 주보강에 값을 입력할 수 있다
   When 값을 입력하면
   Then 값이 입력된다
 
------
-
-Scenario: 네비게이터에서 메뉴를 클릭할 수 있다
-  Given 메뉴와 네비게이터를 렌더하고
-  When 버튼을 클릭하면
-  Then 버튼에 해당하는 주소로 이동한다
-
-Scenario: 문제의 해당 카테고리와 문제 내용이 화면 상단에 보인다.
-  Given 선택된 문제를 렌더하고
-  When 카테고리를 클릭하면
-  Then 문제 리스트 주소로 이동한다.
+# -----
 
 Scenario: pallete의 Given 선택된 문제를 렌더하고
   Given 모든 파레트를 렌더하고
   When 화면 크기를 조절하면
-  Then 버튼의 수가 최대 3열까지만 조절되도록 하고, 버튼의 사이즈를 자동으로 조절한다.
+  Then 버튼의 크기도 화면에 맞게 조절된다.
+
+
+Scenario: react-router-dom
+  Given 모든 화면을 렌더하고 
+  When react-router-dom을 설치하면
+  Then 각 화면을 하나의 페이지에 라우팅한다. 

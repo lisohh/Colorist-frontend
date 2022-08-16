@@ -1,5 +1,5 @@
-.App {
-  padding: 2rem;
+.test-form {
+  margin: 2rem;
 }
 
 .flex {
@@ -98,7 +98,7 @@ textarea#explanation {
   border-style: none;
 }
 
-button#save-button {
+button {
   background-color: #ffdc4f;
   color: black;
   border-color: #ffdc4f;

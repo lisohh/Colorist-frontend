@@ -1,0 +1,26 @@
+{
+  "base": [
+    { "hex": "#CC1313", "colorName": "R" },
+    { "hex": "#FF6B00", "colorName": "YR" },
+    { "hex": "#FFC700", "colorName": "Y" },
+    { "hex": "#90B81F", "colorName": "GY" },
+    { "hex": "#2D7B4C", "colorName": "G" },
+    { "hex": "#1B6553", "colorName": "BG" },
+    { "hex": "#126C72", "colorName": "B" },
+    { "hex": "#4E6192", "colorName": "PB" },
+    { "hex": "#6A377C", "colorName": "P" },
+    { "hex": "#833359", "colorName": "RP" }
+  ],
+  "deep": [
+    { "hex": "#CC1313", "colorName": "R/dp" },
+    { "hex": "#FF6B00", "colorName": "YR/dp" },
+    { "hex": "#FFC700", "colorName": "Y/dp" },
+    { "hex": "#90B81F", "colorName": "GY/dp" },
+    { "hex": "#2D7B4C", "colorName": "G/dp" },
+    { "hex": "#1B6553", "colorName": "BG/dp" },
+    { "hex": "#126C72", "colorName": "B/dp" },
+    { "hex": "#4E6192", "colorName": "PB/dp" },
+    { "hex": "#6A377C", "colorName": "P/dp" },
+    { "hex": "#833359", "colorName": "RP/dp" }
+  ]
+}

@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./Nav.css";
+import Login from "./Login";
 
 const YELLOW_HEX = "#f5cd2f";
 
@@ -15,12 +16,14 @@ function Nav() {
       </ul>
       <ul>
         <li>
-          <strong>Color.list</strong>
+          <a href="./">
+            <strong>Color.list</strong>
+          </a>
         </li>
       </ul>
       <ul>
         <li>
-          <a href="#" className="login">
+          <a href="./Login" className="login">
             login
           </a>
         </li>

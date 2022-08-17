@@ -1,5 +1,5 @@
 {
-  "base": [
+  "기본": [
     { "hex": "#b23337", "colorName": "R" },
     { "hex": "#e37d2e", "colorName": "YR" },
     { "hex": "#efd836", "colorName": "Y" },
@@ -11,7 +11,7 @@
     { "hex": "#584673", "colorName": "P" },
     { "hex": "#873563", "colorName": "RP" }
   ],
-  "vivid": [
+  "vv": [
     { "hex": "#ba3345", "colorName": "R/vv" },
     { "hex": "#e78e49", "colorName": "YR/vv" },
     { "hex": "#feed39", "colorName": "Y/vv" },
@@ -23,7 +23,7 @@
     { "hex": "#724990", "colorName": "P/vv" },
     { "hex": "#a63069", "colorName": "RP/vv" }
   ],
-  "deep": [
+  "dp": [
     { "hex": "#80383e", "colorName": "R/dp" },
     { "hex": "#815142", "colorName": "YR/dp" },
     { "hex": "#7f6f3a", "colorName": "Y/dp" },
@@ -35,7 +35,7 @@
     { "hex": "#563b69", "colorName": "P/dp" },
     { "hex": "#773e5c", "colorName": "RP/dp" }
   ],
-  "dark": [
+  "dk": [
     { "hex": "#4f373b", "colorName": "R/dk" },
     { "hex": "#594344", "colorName": "YR/dk" },
     { "hex": "#605244", "colorName": "Y/dk" },
@@ -47,7 +47,7 @@
     { "hex": "#3f3f4f", "colorName": "P/dk" },
     { "hex": "#4b3a4c", "colorName": "RP/dk" }
   ],
-  "dull": [
+  "dl": [
     { "hex": "#926766", "colorName": "R/dl" },
     { "hex": "#9d7164", "colorName": "YR/dl" },
     { "hex": "#927a59", "colorName": "Y/dl" },
@@ -59,7 +59,7 @@
     { "hex": "#7c6a7b", "colorName": "P/dl" },
     { "hex": "#8f6a74", "colorName": "RP/dl" }
   ],
-  "soft": [
+  "sf": [
     { "hex": "#e9a5a4", "colorName": "R/sf" },
     { "hex": "#dea284", "colorName": "YR/sf" },
     { "hex": "#b89d64", "colorName": "Y/sf" },
@@ -71,7 +71,7 @@
     { "hex": "#af9dbd", "colorName": "P/sf" },
     { "hex": "#ce98a7", "colorName": "RP/sf" }
   ],
-  "light": [
+  "lt": [
     { "hex": "#e89a91", "colorName": "R/lt" },
     { "hex": "#efb690", "colorName": "YR/lt" },
     { "hex": "#fada6c", "colorName": "Y/lt" },
@@ -83,7 +83,7 @@
     { "hex": "#ae9ec7", "colorName": "P/lt" },
     { "hex": "#e494af", "colorName": "RP/lt" }
   ],
-  "pale": [
+  "pl": [
     { "hex": "#f0c4bd", "colorName": "R/pl" },
     { "hex": "#f2c2a4", "colorName": "YR/pl" },
     { "hex": "#dfd296", "colorName": "Y/pl" },
@@ -95,7 +95,7 @@
     { "hex": "#cbc1d2", "colorName": "P/pl" },
     { "hex": "#e1bec4", "colorName": "RP/pl" }
   ],
-  "whitish": [
+  "wh": [
     { "hex": "#f7e4e2", "colorName": "R/wh" },
     { "hex": "#f8e2cf", "colorName": "YR/wh" },
     { "hex": "#fffad2", "colorName": "Y/wh" },
@@ -107,7 +107,7 @@
     { "hex": "#e8e3e3", "colorName": "P/wh" },
     { "hex": "#faefe8", "colorName": "RP/wh" }
   ],
-  "lightGrayish": [
+  "ltgy": [
     { "hex": "#bfaba8", "colorName": "R/ltgy" },
     { "hex": "#c0ab9c", "colorName": "YR/ltgy" },
     { "hex": "#bdab95", "colorName": "Y/ltgy" },
@@ -119,7 +119,7 @@
     { "hex": "#a49b9d", "colorName": "P/ltgy" },
     { "hex": "#b39f9c", "colorName": "RP/ltgy" }
   ],
-  "grayish": [
+  "gy": [
     { "hex": "#84726f", "colorName": "R/gy" },
     { "hex": "#7f7069", "colorName": "YR/gy" },
     { "hex": "#716458", "colorName": "Y/gy" },
@@ -131,7 +131,7 @@
     { "hex": "#6e6768", "colorName": "P/gy" },
     { "hex": "#736566", "colorName": "RP/gy" }
   ],
-  "darkGrayish": [
+  "dkgy": [
     { "hex": "#57494b", "colorName": "R/dkgy" },
     { "hex": "#4e4745", "colorName": "YR/dkgy" },
     { "hex": "#4d4d47", "colorName": "Y/dkgy" },
@@ -143,7 +143,7 @@
     { "hex": "#4d4751", "colorName": "P/dkgy" },
     { "hex": "#4f424d", "colorName": "RP/dkgy" }
   ],
-  "black": [
+  "bk": [
     { "hex": "#4e4244", "colorName": "R/bk" },
     { "hex": "#534240", "colorName": "YR/bk" },
     { "hex": "#4e4741", "colorName": "Y/bk" },
@@ -155,7 +155,7 @@
     { "hex": "#433f4a", "colorName": "P/bk" },
     { "hex": "#433d46", "colorName": "RP/bk" }
   ],
-  "Neutral": [
+  "N": [
     { "hex": "#fcfeff", "colorName": "N9.5" },
     { "hex": "#e9e8e7", "colorName": "N9" },
     { "hex": "#cdcccc", "colorName": "N8" },

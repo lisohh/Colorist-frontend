@@ -1,4 +1,4 @@
-Feature: App
+Feature: TestForm
 # Gherkin
 
 Scenario: 선택된 색깔 목록이 박스에 보인다
@@ -25,13 +25,12 @@ Scenario: 주보강에 값을 입력할 수 있다
 
 # -----
 
-Scenario: pallete의 Given 선택된 문제를 렌더하고
-  Given 모든 파레트를 렌더하고
+Scenario: 화면 크기를 조절하면 버튼의 크기도 변경된다
+  Given 파레트를 렌더하고
   When 화면 크기를 조절하면
-  Then 버튼의 크기도 화면에 맞게 조절된다.
+  Then 버튼의 크기도 화면에 맞게 조절된다
 
-
-Scenario: react-router-dom
-  Given 모든 화면을 렌더하고 
-  When react-router-dom을 설치하면
-  Then 각 화면을 하나의 페이지에 라우팅한다. 
+Scenario: 탭을 클릭하면 원하는 팔레트로 변경할 수 있다
+  Given 파레트를 렌더하고
+  When 탭에서 원하는 팔레트 버튼을 클릭하면
+  Then 원하는 팔레트로 변경된다

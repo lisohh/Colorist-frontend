@@ -1,9 +1,14 @@
 import * as React from "react";
 import "./TestForm.css";
 import allPallete from "./pallete.json";
+import * as Tabs from "@radix-ui/react-tabs";
 
-const pallete = allPallete.base;
-// const pallete = JSON.parse(pallete);
+// ["base", "deep"]
+const palleteTypes = Object.keys(allPallete);
+
+// 8월 16일 2번
+// https://www.radix-ui.com/docs/primitives/components/tabs#examples
+// bun add @radix-ui/react-tabs
 
 const BOX_COUNT = 10;
 const WHITE_HEX = "#ffffff";
@@ -114,19 +119,35 @@ function TestForm() {
         </tr>
       </table>
       <div id="pallete-box">
-        <div id="pallete" className="flex flex-row flex-wrap">
-          {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
-          {pallete.map(({ hex, colorName }, index) => (
-            <button
-              key={index}
-              onClick={() => addSelected(hex)}
-              className="roundButton"
-              style={{ backgroundColor: hex }}
-            >
-              {colorName}
-            </button>
+        <Tabs.Root defaultValue="base" orientation="horizontal">
+          <Tabs.List aria-label="select pallete type">
+            {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
+            {palleteTypes.map((value) => (
+              <Tabs.Trigger key={value} value={value}>
+                {value}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+          {/* ["base", "deep"]*/}
+          {/* 팔레트의 타입마다 Tabs.Content를 만들어준다*/}
+          {palleteTypes.map((value) => (
+            <Tabs.Content key={value} value={value}>
+              <div id="pallete" className="flex flex-row flex-wrap">
+                {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
+                {allPallete[value].map(({ hex, colorName }, index) => (
+                  <button
+                    key={index}
+                    onClick={() => addSelected(hex)}
+                    className="roundButton"
+                    style={{ backgroundColor: hex }}
+                  >
+                    {colorName}
+                  </button>
+                ))}
+              </div>
+            </Tabs.Content>
           ))}
-        </div>
+        </Tabs.Root>
       </div>
       {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
       {/* <input type="text" /> */}
@@ -147,10 +168,6 @@ function TestForm() {
         id="color-selection"
         placeholder={"보조색:"}
         value={subColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 subColor 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setSubColor(event.target.value)}
       />
       <label htmlFor="point-color">강조색</label>
@@ -158,10 +175,6 @@ function TestForm() {
         id="color-selection"
         placeholder={"강조색:"}
         value={pointColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 pointColor 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setPointColor(event.target.value)}
       />
       <label htmlFor="explanation" id="explanation">
@@ -171,10 +184,6 @@ function TestForm() {
         id="explanation"
         placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         value={explanation}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 explanation 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setExplanation(event.target.value)}
       />
       <p id="allColor">주보강 기입</p>
@@ -183,10 +192,6 @@ function TestForm() {
         id="color-selection"
         placeholder={"주조색:"}
         value={mainColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 colorSelection 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setMainColor(event.target.value)}
       />
       <label htmlFor="sub-color">보조색</label>
@@ -194,10 +199,6 @@ function TestForm() {
         id="color-selection"
         placeholder={"보조색:"}
         value={subColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 subColor 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setSubColor(event.target.value)}
       />
       <label htmlFor="point-color">강조색</label>
@@ -205,10 +206,6 @@ function TestForm() {
         id="color-selection"
         placeholder={"강조색:"}
         value={pointColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 pointColor 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setPointColor(event.target.value)}
       />
       <label htmlFor="explanation" id="explanation">
@@ -218,10 +215,6 @@ function TestForm() {
         id="explanation"
         placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         value={explanation}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 colorSelection 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
         onChange={(event) => setExplanation(event.target.value)}
       />
       <button id="save-button" type="submit">

@@ -98,8 +98,14 @@ textarea#explanation {
   border-style: none;
 }
 
-button {
-  background-color: #ffdc4f;
-  color: black;
-  border-color: #ffdc4f;
+/* https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role */
+button[role="tab"] {
+  display: inline-block;
+  width: initial;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+button[role="tab"][aria-selected="true"] {
+  background-color: var(--primary-darker);
+  border-color: var(--primary-darker);
 }

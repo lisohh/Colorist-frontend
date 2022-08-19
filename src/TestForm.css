@@ -109,3 +109,13 @@ button[role="tab"][aria-selected="true"] {
   background-color: var(--primary-darker);
   border-color: var(--primary-darker);
 }
+
+.tooltip-content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.tooltip-arrow {
+  color: white;
+}

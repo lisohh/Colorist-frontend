@@ -2,6 +2,7 @@ import * as React from "react";
 import "./TestForm.css";
 import allPallete from "./pallete.json";
 import * as Tabs from "@radix-ui/react-tabs";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 // ["base", "deep"]
 const palleteTypes = Object.keys(allPallete);
@@ -36,6 +37,8 @@ const QuizList = [
   "문제9번 내용",
   "문제10번 내용",
 ];
+
+// 탭의 색깔에 명도/채도가 반영되면 좋겠다
 
 function TestForm() {
   //1번 - 선택된 색이 여러개인 배열을 만든다 - BOX_COUNT 개인 배열을 만들어서 흰색으로 채운다
@@ -86,141 +89,158 @@ function TestForm() {
   );
 
   return (
-    <article className="test-form">
-      <div className="quiz-paragraph">
-        <a className="category" href="">
-          2022년도 - 제품
-        </a>
-        <h1 id="q">Q.</h1>
-        <h1 id="quiz-text">
-          따뜻하고 풍요로운 이미지와 차갑고 쓸쓸한 이미지 두가지를 연출해
-          보세요.
-        </h1>
-        <h6 id="condition">(3색 이상, 10칸 이상 배색)</h6>
-      </div>
-      <table className="selectedContainer flex flex-row">
-        {/* 2번 - map을 써서 배열의 값을 화면에 뿌려준다. */}
-        {/* https://beta.reactjs.org/learn/rendering-lists */}
-        <tr>
-          {/* 7.2번 - targetIndex는 여기서 index를 받아온 값이다. */}
-          {colors.map((color, index) => (
-            // 3번 - 스타일에 map으로 받아온 color 문자열 값을 backgroundColor로 지정해준다.
-            <td
-              // 이게 선택한 칸의 index
-              onClick={() => deleteSelected(index)}
-              style={{
-                backgroundColor: color,
-              }}
-            >
-              {color}
-              {/* text node */}
-            </td>
-          ))}
-        </tr>
-      </table>
-      <div id="pallete-box">
-        <Tabs.Root defaultValue="base" orientation="horizontal">
-          <Tabs.List aria-label="select pallete type">
-            {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
-            {palleteTypes.map((value) => (
-              <Tabs.Trigger key={value} value={value}>
-                {value}
-              </Tabs.Trigger>
+    <Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
+      <article className="test-form">
+        <div className="quiz-paragraph">
+          <a className="category" href="">
+            2022년도 - 제품
+          </a>
+          <h1 id="q">Q.</h1>
+          <h1 id="quiz-text">
+            따뜻하고 풍요로운 이미지와 차갑고 쓸쓸한 이미지 두가지를 연출해
+            보세요.
+          </h1>
+          <h6 id="condition">(3색 이상, 10칸 이상 배색)</h6>
+        </div>
+        <table className="selectedContainer flex flex-row">
+          {/* 2번 - map을 써서 배열의 값을 화면에 뿌려준다. */}
+          {/* https://beta.reactjs.org/learn/rendering-lists */}
+          <tr>
+            {/* 7.2번 - targetIndex는 여기서 index를 받아온 값이다. */}
+            {colors.map((color, index) => (
+              // 3번 - 스타일에 map으로 받아온 color 문자열 값을 backgroundColor로 지정해준다.
+              <td
+                // 이게 선택한 칸의 index
+                onClick={() => deleteSelected(index)}
+                style={{
+                  backgroundColor: color,
+                }}
+              >
+                {color}
+                {/* text node */}
+              </td>
             ))}
-          </Tabs.List>
-          {/* ["base", "deep"]*/}
-          {/* 팔레트의 타입마다 Tabs.Content를 만들어준다*/}
-          {palleteTypes.map((value) => (
-            <Tabs.Content key={value} value={value}>
-              <div id="pallete" className="flex flex-row flex-wrap">
-                {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
-                {allPallete[value].map(({ hex, colorName }, index) => (
-                  <button
-                    key={index}
-                    onClick={() => addSelected(hex)}
-                    className="roundButton"
-                    style={{ backgroundColor: hex }}
-                  >
-                    {colorName}
-                  </button>
-                ))}
-              </div>
-            </Tabs.Content>
-          ))}
-        </Tabs.Root>
-      </div>
-      {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
-      {/* <input type="text" /> */}
-      <p id="allColor">주보강 기입</p>
-      <label htmlFor="main-color">주조색</label>
-      <input
-        id="color-selection"
-        placeholder={"주조색:"}
-        value={mainColor}
-        // change event의 target인 textarea의 새로 변경된 값을
-        // react의 mainColor 상태에 세팅
-        // 값을 동기화해주는 거에요.
-        // https://beta.reactjs.org/learn/reacting-to-input-with-state
-        onChange={(event) => setMainColor(event.target.value)}
-      />
-      <label htmlFor="sub-color">보조색</label>
-      <input
-        id="color-selection"
-        placeholder={"보조색:"}
-        value={subColor}
-        onChange={(event) => setSubColor(event.target.value)}
-      />
-      <label htmlFor="point-color">강조색</label>
-      <input
-        id="color-selection"
-        placeholder={"강조색:"}
-        value={pointColor}
-        onChange={(event) => setPointColor(event.target.value)}
-      />
-      <label htmlFor="explanation" id="explanation">
-        배색 설명
-      </label>
-      <textarea
-        id="explanation"
-        placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-        value={explanation}
-        onChange={(event) => setExplanation(event.target.value)}
-      />
-      <p id="allColor">주보강 기입</p>
-      <label htmlFor="main-color">주조색</label>
-      <input
-        id="color-selection"
-        placeholder={"주조색:"}
-        value={mainColor}
-        onChange={(event) => setMainColor(event.target.value)}
-      />
-      <label htmlFor="sub-color">보조색</label>
-      <input
-        id="color-selection"
-        placeholder={"보조색:"}
-        value={subColor}
-        onChange={(event) => setSubColor(event.target.value)}
-      />
-      <label htmlFor="point-color">강조색</label>
-      <input
-        id="color-selection"
-        placeholder={"강조색:"}
-        value={pointColor}
-        onChange={(event) => setPointColor(event.target.value)}
-      />
-      <label htmlFor="explanation" id="explanation">
-        배색 설명
-      </label>
-      <textarea
-        id="explanation"
-        placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-        value={explanation}
-        onChange={(event) => setExplanation(event.target.value)}
-      />
-      <button id="save-button" type="submit">
-        저장하기
-      </button>
-    </article>
+          </tr>
+        </table>
+        <div id="pallete-box">
+          <Tabs.Root
+            defaultValue={Object.keys(allPallete)[0]}
+            orientation="horizontal"
+          >
+            <Tabs.List aria-label="select pallete type">
+              {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
+              {palleteTypes.map((value) => (
+                <Tabs.Trigger key={value} value={value}>
+                  {value}
+                </Tabs.Trigger>
+              ))}
+            </Tabs.List>
+            {/* ["base", "deep"]*/}
+            {/* 팔레트의 타입마다 Tabs.Content를 만들어준다*/}
+            {palleteTypes.map((value) => (
+              <Tabs.Content key={value} value={value}>
+                <div id="pallete" className="flex flex-row flex-wrap">
+                  {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
+                  {allPallete[value].map(({ hex, colorName }, index) => (
+                    <Tooltip.Root>
+                      <Tooltip.Trigger asChild>
+                        <button
+                          key={index}
+                          onClick={() => addSelected(hex)}
+                          className="roundButton"
+                          style={{ backgroundColor: hex }}
+                        >
+                          {colorName}
+                        </button>
+                      </Tooltip.Trigger>
+                      <Tooltip.Content className="tooltip-content">
+                        {hex}
+                        <Tooltip.Arrow
+                          className="tooltip-arrow"
+                          width="20"
+                          height="10"
+                        />
+                      </Tooltip.Content>
+                    </Tooltip.Root>
+                  ))}
+                </div>
+              </Tabs.Content>
+            ))}
+          </Tabs.Root>
+        </div>
+        {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
+        {/* <input type="text" /> */}
+        <p id="allColor">주보강 기입</p>
+        <label htmlFor="main-color">주조색</label>
+        <input
+          id="color-selection"
+          placeholder="주조색:"
+          value={mainColor}
+          // change event의 target인 textarea의 새로 변경된 값을
+          // react의 mainColor 상태에 세팅
+          // 값을 동기화해주는 거에요.
+          // https://beta.reactjs.org/learn/reacting-to-input-with-state
+          onChange={(event) => setMainColor(event.target.value)}
+        />
+        <label htmlFor="sub-color">보조색</label>
+        <input
+          id="color-selection"
+          placeholder="보조색:"
+          value={subColor}
+          onChange={(event) => setSubColor(event.target.value)}
+        />
+        <label htmlFor="point-color">강조색</label>
+        <input
+          id="color-selection"
+          placeholder="강조색:"
+          value={pointColor}
+          onChange={(event) => setPointColor(event.target.value)}
+        />
+        <label htmlFor="explanation" id="explanation">
+          배색 설명
+        </label>
+        <textarea
+          id="explanation"
+          placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
+          value={explanation}
+          onChange={(event) => setExplanation(event.target.value)}
+        />
+        <p id="allColor">주보강 기입</p>
+        <label htmlFor="main-color">주조색</label>
+        <input
+          id="color-selection"
+          placeholder="주조색:"
+          value={mainColor}
+          onChange={(event) => setMainColor(event.target.value)}
+        />
+        <label htmlFor="sub-color">보조색</label>
+        <input
+          id="color-selection"
+          placeholder="보조색:"
+          value={subColor}
+          onChange={(event) => setSubColor(event.target.value)}
+        />
+        <label htmlFor="point-color">강조색</label>
+        <input
+          id="color-selection"
+          placeholder="강조색:"
+          value={pointColor}
+          onChange={(event) => setPointColor(event.target.value)}
+        />
+        <label htmlFor="explanation" id="explanation">
+          배색 설명
+        </label>
+        <textarea
+          id="explanation"
+          placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
+          value={explanation}
+          onChange={(event) => setExplanation(event.target.value)}
+        />
+        <button id="save-button" type="submit">
+          저장하기
+        </button>
+      </article>
+    </Tooltip.Provider>
   );
 }
 

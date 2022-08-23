@@ -18,7 +18,7 @@ function Drawer({ children }) {
       <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content mb-0">
           <li>
             <a>Sidebar Item 1</a>
           </li>

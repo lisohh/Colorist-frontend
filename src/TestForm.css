@@ -63,8 +63,8 @@ a.category {
   font-size: small;
 }
 
-h1#q,
-h1#quiz-text {
+span#q,
+span#quiz-text {
   display: inline-block;
   width: fit-content;
   margin-bottom: 0.3rem;

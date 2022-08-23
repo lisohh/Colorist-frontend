@@ -51,7 +51,9 @@ function Login() {
           />
         </label>
         {errors.password && <li role="alert">{errors.password.message}</li>}
-        <button type="submit">로그인</button>
+        <button type="submit" className="bg-yellow-300">
+          로그인
+        </button>
       </form>
     </article>
   );

@@ -1,3 +1,13 @@
 .login-form {
   margin: 2rem;
 }
+
+.login-form h2 {
+  text-align: center;
+}
+
+.login-form label,
+.login-form input {
+  margin-left: 0;
+  padding: 0 20px 20px 20px;
+}

@@ -10,29 +10,37 @@ div.profile-text h2 {
 }
 
 div.profile-text a {
-  padding: 6px;
-  border: 1px solid blue;
+  padding: 10px;
   border-radius: 8px;
+  background-color: hsl(48deg, 100%, 65%);
 }
 
 label {
   font-size: x-large;
   padding: 40px 0 0 30px;
 }
+
+div.btn-group {
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 12px;
+}
+
 /* >_ 768px (Desktop) */
 @media screen and (min-width: 0px) {
   a.profileImg,
   img.bubble {
     margin-top: 10px;
     margin-left: 10px;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
   }
 
   div.profile-text {
     display: inline-block;
     padding-left: 50px;
+    align-items: center;
   }
 }
 

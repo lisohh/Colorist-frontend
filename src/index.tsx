@@ -8,6 +8,7 @@ import Nav from "./Nav";
 import Login from "./Login";
 import Notfound from "./Notfound";
 import Drawer from "./Drawer";
+import Mypage from "./Mypage";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<TestForm />} />
           <Route path="/login/*" element={<Login />} />
+          <Route path="/mypage/*" element={<Mypage />} />
           {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}
           <Route path="*" element={<Notfound />}></Route>
         </Routes>

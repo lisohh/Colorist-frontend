@@ -20,10 +20,10 @@ function Drawer({ children }) {
 
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content mb-0">
           <li>
-            <a>Sidebar Item 1</a>
+            <a href="/Mypage">마이 페이지</a>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <a>문제 목록</a>
           </li>
         </ul>
       </div>

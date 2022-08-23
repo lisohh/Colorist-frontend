@@ -76,19 +76,22 @@ p#allColor {
   font-size: 24px;
   margin-bottom: 0.6rem;
 }
-label {
-  margin-left: 0.2rem;
+
+label.color-label {
+  margin-left: -1rem;
   font-weight: bold;
 }
 
 label#explanation {
   font-size: 24px;
 }
+
 input#color-selection {
   height: 3rem;
   border-radius: 10px;
   background-color: #e6e6e6;
   border-style: none;
+  margin-bottom: -1rem;
 }
 
 textarea#explanation {

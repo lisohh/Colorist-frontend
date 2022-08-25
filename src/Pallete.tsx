@@ -43,6 +43,12 @@ function Pallete() {
   return (
     <Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
       <table className="selectedContainer flex flex-row">
+        <input
+          type="text"
+          name="colors"
+          value={JSON.stringify(colors)}
+          hidden
+        />
         {/* 2번 - map을 써서 배열의 값을 화면에 뿌려준다. */}
         {/* https://beta.reactjs.org/learn/rendering-lists */}
         <tr>
@@ -69,7 +75,12 @@ function Pallete() {
           <Tabs.List aria-label="select pallete type">
             {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
             {palleteTypes.map((value) => (
-              <Tabs.Trigger key={value} value={value} className="bg-yellow-200">
+              <Tabs.Trigger
+                key={value}
+                value={value}
+                className="bg-yellow-200"
+                type="button"
+              >
                 {value}
               </Tabs.Trigger>
             ))}
@@ -84,6 +95,7 @@ function Pallete() {
                   <Tooltip.Root>
                     <Tooltip.Trigger asChild>
                       <button
+                        type="button"
                         key={index}
                         onClick={() => addSelected(hex)}
                         className="roundButton"

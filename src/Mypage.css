@@ -5,19 +5,10 @@ a.profileImg {
   display: inline-block;
 }
 
-div.profile-text h2 {
-  margin: 20px 0;
-}
-
 div.profile-text a {
   padding: 10px;
   border-radius: 8px;
   background-color: hsl(48deg, 100%, 65%);
-}
-
-label {
-  font-size: x-large;
-  padding: 40px 0 0 30px;
 }
 
 /* >_ 768px (Desktop) */

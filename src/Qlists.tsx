@@ -2,6 +2,7 @@ import React from "react";
 import "./Qlists.css";
 import Pagination from "./Pagination";
 import { problemList } from "./problemList";
+import SelectGroup from "./SelectGroup";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -11,29 +12,7 @@ function Mypage() {
       <article className="profile">
         <div className="question-list">
           <h2 id="all-Q-list-heading">모든 문제</h2>
-          <section className="select-group mb-1">
-            <select className="select w-32 mr-4 pop-box-shadow text-center text-base">
-              <option disabled selected>
-                2022
-              </option>
-              <option>2021</option>
-              <option>2020</option>
-              <option>2019</option>
-            </select>
-            <select className="select w-32 mr-4 pop-box-shadow text-center text-base">
-              <option disabled selected>
-                1회차
-              </option>
-              <option>2회차</option>
-              <option>3회차</option>
-            </select>
-            <select className="select w-40 mr-4 pop-box-shadow text-center text-base">
-              <option disabled selected>
-                1,2번 유형
-              </option>
-              <option>3번 유형</option>
-            </select>
-          </section>
+          <SelectGroup />
           <table
             className="table table-zebra w-full"
             aria-labelledby="solved-list-heading"

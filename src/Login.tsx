@@ -51,7 +51,7 @@ function Login() {
           />
         </label>
         {errors.password && <li role="alert">{errors.password.message}</li>}
-        <button type="submit" className="bg-yellow-300">
+        <button type="submit" className="w-full bg-yello-300">
           로그인
         </button>
       </form>

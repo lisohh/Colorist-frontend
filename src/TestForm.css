@@ -37,20 +37,20 @@ div#pallete {
   margin: 0.4rem;
 }
 
-td {
+.selectedContainer {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.selectedContainer td {
   width: 0.5rem;
   height: 10rem;
   border: 1px solid lightgray;
 }
 
-td:first-child,
-td:last-child {
+.selectedContainer td:first-child,
+.selectedContainer td:last-child {
   border-radius: 2rem;
-}
-
-.selectedContainer {
-  justify-content: center;
-  margin-bottom: 1rem;
 }
 
 div.quiz-paragraph {

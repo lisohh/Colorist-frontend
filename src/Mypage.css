@@ -20,12 +20,6 @@ label {
   padding: 40px 0 0 30px;
 }
 
-div.btn-group {
-  display: flex;
-  flex-wrap: nowrap;
-  font-size: 12px;
-}
-
 /* >_ 768px (Desktop) */
 @media screen and (min-width: 0px) {
   a.profileImg,

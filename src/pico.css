@@ -832,7 +832,6 @@ button {
 }
 button {
   display: block;
-  width: 100%;
   margin-bottom: var(--spacing);
 }
 [role="button"] {

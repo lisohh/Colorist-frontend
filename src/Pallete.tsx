@@ -42,13 +42,8 @@ function Pallete() {
 
   return (
     <Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
+      <input type="text" name="colors" value={JSON.stringify(colors)} hidden />
       <table className="selectedContainer flex flex-row">
-        <input
-          type="text"
-          name="colors"
-          value={JSON.stringify(colors)}
-          hidden
-        />
         {/* 2번 - map을 써서 배열의 값을 화면에 뿌려준다. */}
         {/* https://beta.reactjs.org/learn/rendering-lists */}
         <tr>
@@ -61,6 +56,7 @@ function Pallete() {
               style={{
                 backgroundColor: color,
               }}
+              key={color + "-" + index}
             >
               {color}
             </td>
@@ -72,13 +68,16 @@ function Pallete() {
           defaultValue={Object.keys(allPallete)[0]}
           orientation="horizontal"
         >
-          <Tabs.List aria-label="select pallete type">
+          <Tabs.List
+            aria-label="select pallete type"
+            className="w-full tabs grid lg:grid-cols-14 sm:grid-cols-7 grid-cols-5 mb-4"
+          >
             {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
             {palleteTypes.map((value) => (
               <Tabs.Trigger
                 key={value}
                 value={value}
-                className="bg-yellow-200"
+                className="bg-yellow-200 tab tab-lifted p-1 md:p-2 mb-1"
                 type="button"
               >
                 {value}
@@ -92,11 +91,10 @@ function Pallete() {
               <div id="pallete" className="flex flex-row flex-wrap">
                 {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
                 {allPallete[value].map(({ hex, colorName }, index) => (
-                  <Tooltip.Root>
+                  <Tooltip.Root key={index}>
                     <Tooltip.Trigger asChild>
                       <button
                         type="button"
-                        key={index}
                         onClick={() => addSelected(hex)}
                         className="roundButton"
                         style={{ backgroundColor: hex }}

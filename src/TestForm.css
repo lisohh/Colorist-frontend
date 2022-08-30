@@ -78,7 +78,6 @@ p#allColor {
 }
 
 label.color-label {
-  margin-left: -1rem;
   font-weight: bold;
 }
 
@@ -91,7 +90,6 @@ input#color-selection {
   border-radius: 10px;
   background-color: #e6e6e6;
   border-style: none;
-  margin-bottom: -1rem;
 }
 
 textarea#explanation {

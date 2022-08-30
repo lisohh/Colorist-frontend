@@ -11,6 +11,10 @@ div.profile-text a {
   background-color: hsl(48deg, 100%, 65%);
 }
 
+h2 {
+  margin: 1rem 0;
+}
+
 /* >_ 768px (Desktop) */
 @media screen and (min-width: 0px) {
   a.profileImg,

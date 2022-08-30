@@ -9,13 +9,14 @@ import SelectGroup from "./SelectGroup";
 function Mypage() {
   return (
     <div className="mypage">
-      <article className="profile">
-        <div className="question-list">
-          <h2 id="all-Q-list-heading">모든 문제</h2>
-          <SelectGroup />
+      <article className="Qpage">
+        <h2 className="title text-center">문제 목록</h2>
+        <section className="view-arrange"></section>
+        <div className="most-viewed-list">
+          <h3 className="mostViewed-Q-list-heading ml-4">가장 많이 본 문제</h3>
           <table
             className="table table-zebra w-full"
-            aria-labelledby="solved-list-heading"
+            aria-labelledby="Mostviewd-list-heading"
           >
             <thead>
               <tr>
@@ -28,7 +29,7 @@ function Mypage() {
               </tr>
             </thead>
             <tbody>
-              {problemList.map((item) => (
+              {problemList.slice(0, 5).map((item) => (
                 <tr>
                   <td>
                     <input type="checkbox" className="checkbox checkbox-" />
@@ -43,6 +44,74 @@ function Mypage() {
             </tbody>
           </table>
         </div>
+        <section className="save-arrange"></section>
+        <div className="most-solved-list">
+          <h3 className="mostSolved-Q-list-heading ml-4">가장 많이 푼 문제</h3>
+          <table
+            className="table table-zebra w-full"
+            aria-labelledby="Mostsolved-list-heading"
+          >
+            <thead>
+              <tr>
+                <th>선택</th>
+                <th>연도</th>
+                <th>회차</th>
+                <th>유형</th>
+                <th>문제 이름</th>
+                <th>푼 날짜</th>
+              </tr>
+            </thead>
+            <tbody>
+              {problemList.slice(0, 5).map((item) => (
+                <tr>
+                  <td>
+                    <input type="checkbox" className="checkbox checkbox-" />
+                  </td>
+                  <td>{item.year}</td>
+                  <td>{item.round}</td>
+                  <td>{item.type}</td>
+                  <td>{item.title}</td>
+                  <td>{item.solvedAt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <section className="all">
+          <div className="question-list">
+            <h3 className="all-Q-list-heading ml-4">모든 문제</h3>
+            <SelectGroup />
+            <table
+              className="table table-zebra w-full"
+              aria-labelledby="solved-list-heading"
+            >
+              <thead>
+                <tr>
+                  <th>선택</th>
+                  <th>연도</th>
+                  <th>회차</th>
+                  <th>유형</th>
+                  <th>문제 이름</th>
+                  <th>푼 날짜</th>
+                </tr>
+              </thead>
+              <tbody>
+                {problemList.map((item) => (
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="checkbox checkbox-" />
+                    </td>
+                    <td>{item.year}</td>
+                    <td>{item.round}</td>
+                    <td>{item.type}</td>
+                    <td>{item.title}</td>
+                    <td>{item.solvedAt}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
         <footer className="flex flex-row justify-between">
           <button type="button" className="w-20 bg-yellow-300">
             출력

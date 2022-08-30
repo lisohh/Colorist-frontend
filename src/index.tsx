@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import "./pico.css";
-import TestForm from "./TestForm";
-import Nav from "./Nav";
-import Login from "./Login";
 import Notfound from "./Notfound";
-import Drawer from "./Drawer";
-import Mypage from "./Mypage";
-import Qlists from "./Qlists";
+import Drawer from "./components/Drawer";
+import Nav from "./components/Nav";
+import Login from "./pages/login/Login";
+import TestForm from "./pages/testform/TestForm";
+import Mypage from "./pages/mypage/Mypage";
+import Qlists from "./pages/qlists/Qlists";
 
 ReactDOM.render(
   <React.StrictMode>

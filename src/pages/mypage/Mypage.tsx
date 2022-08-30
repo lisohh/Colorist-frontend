@@ -1,8 +1,8 @@
 import React from "react";
 import "./Mypage.css";
-import Pagination from "./Pagination";
-import { problemList } from "./problemList";
-import SelectGroup from "./SelectGroup";
+import { problemList } from "../qlists/problemList";
+import SelectGroup from "../../components/SelectGroup";
+import Pagination from "../../components/Pagination";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 

@@ -40,7 +40,9 @@ div#pallete {
 .selectedContainer {
   justify-content: center;
   margin-bottom: 1rem;
+  border-collapse: inherit;
 }
+/* border-collapse로 양 끝 td 둥글게 맞춤 - 선택된 색 칸에 border-radius를 준 거에 맞춰진듯 */
 
 .selectedContainer td {
   width: 0.5rem;
@@ -48,9 +50,16 @@ div#pallete {
   border: 1px solid lightgray;
 }
 
-.selectedContainer td:first-child,
+.selectedContainer td:not(:last-child) {
+  border-right: none;
+}
+
+.selectedContainer td:first-child {
+  border-radius: 2rem 0 0 2rem;
+  border-right: none;
+}
 .selectedContainer td:last-child {
-  border-radius: 2rem;
+  border-radius: 0 2rem 2rem 0;
 }
 
 div.quiz-paragraph {

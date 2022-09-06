@@ -9,7 +9,7 @@ export function DrawerOpenButton() {
   );
 }
 
-function Drawer({ children }) {
+function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />

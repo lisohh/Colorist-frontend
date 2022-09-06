@@ -1,8 +1,9 @@
 import * as React from "react";
-import Pallete from "./pallete";
+import Pallete from "./Pallete";
 import "./TestForm.css";
-import QuizList from "../../quizList.json";
-import { saveColors } from "../../api";
+import QuizList from "~/pages/qlists/quizList.json";
+import { saveColors } from "~/api"; // absolute 절대
+// import { saveColors } from "../../api"; // relative 상대
 
 // 8월 16일 2번
 // https://www.radix-ui.com/docs/primitives/components/tabs#examples

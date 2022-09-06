@@ -1,6 +1,5 @@
 import * as React from "react";
 import "./Nav.css";
-import Login from "./Login";
 import { DrawerOpenButton } from "./Drawer";
 
 const YELLOW_HEX = "#f5cd2f";

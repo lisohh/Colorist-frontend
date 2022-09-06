@@ -1,5 +1,5 @@
 {
-  "strong": [
+  "base": [
     { "hex": "#b23337", "colorName": "R" },
     { "hex": "#e37d2e", "colorName": "YR" },
     { "hex": "#efd836", "colorName": "Y" },

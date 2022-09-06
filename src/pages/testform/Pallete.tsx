@@ -4,7 +4,15 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import allPallete from "./pallete.json";
 
 // ["base", "deep"]
-const palleteTypes = Object.keys(allPallete);
+// 밑의 코드 잘 이해하도록 노력하기 - 화요일에 한번 더 복습 + 타입스크립트 기본기
+
+// typeof 값의 type을 꺼내줌
+type AllPalleteT = typeof allPallete;
+// 이 객체의 key들의 타입
+type AllPalleteKeysT = keyof AllPalleteT;
+
+// type assertion => as T  T 타입으로 친다
+const palleteTypes = Object.keys(allPallete) as AllPalleteKeysT[]; // 키들로 이루어진 배열으로 친다
 const BOX_COUNT = 10;
 const WHITE_HEX = "#ffffff";
 
@@ -77,7 +85,7 @@ function Pallete() {
               <Tabs.Trigger
                 key={value}
                 value={value}
-                className="bg-yellow-200 tab tab-lifted p-1 md:p-2 mb-1"
+                className="bg-yellow-200 tab tab-lifted p-1 h-10 leading-none text-black"
                 type="button"
               >
                 {value}

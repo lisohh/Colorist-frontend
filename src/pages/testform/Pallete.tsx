@@ -2,6 +2,7 @@ import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import allPallete from "./pallete.json";
+import ResizableBoxes from "./ResizableBoxes";
 
 // ["base", "deep"]
 // 밑의 코드 잘 이해하도록 노력하기 - 화요일에 한번 더 복습 + 타입스크립트 기본기
@@ -51,26 +52,7 @@ function Pallete() {
   return (
     <Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
       <input type="text" name="colors" value={JSON.stringify(colors)} hidden />
-      <table className="selectedContainer flex flex-row">
-        {/* 2번 - map을 써서 배열의 값을 화면에 뿌려준다. */}
-        {/* https://beta.reactjs.org/learn/rendering-lists */}
-        <tr>
-          {/* 7.2번 - targetIndex는 여기서 index를 받아온 값이다. */}
-          {colors.map((color, index) => (
-            // 3번 - 스타일에 map으로 받아온 color 문자열 값을 backgroundColor로 지정해준다.
-            <td
-              // 이게 선택한 칸의 index
-              onClick={() => deleteSelected(index)}
-              style={{
-                backgroundColor: color,
-              }}
-              key={color + "-" + index}
-            >
-              {color}
-            </td>
-          ))}
-        </tr>
-      </table>
+      <ResizableBoxes />
       <div id="pallete-box">
         <Tabs.Root
           defaultValue={Object.keys(allPallete)[0]}

@@ -10,27 +10,33 @@ function ResizableBoxes() {
   const [startX, setStartX] = useState(0);
   const [changingIndex, setChangingIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
-  const [nowX, setNowX] = useState(0);
 
   useEffect(() => {
+    //마우스가 움직일 때 마다 박스 크기를 조절해주는 핸들러
     function moveHandler(e: MouseEvent) {
-      setNowX(e.clientX);
       if (isChanging) {
-        const diff = e.clientX - startX;
-
+        // 처음 시작할 때 왼쪽 박스랑, 오른쪽 박스 크기를 가져온다
         const left = oldSegments[changingIndex];
         const right = oldSegments[changingIndex + 1];
 
-        // 1/16
-
-        // 4/16 8/16    => 3/4
-        // 5/16
-        // 11/16 1/16 => 3/4
-
-        // 1/8 7/16 1/16 1/4 1/8
+        // 왼쪽 오른쪽 박스 너비의 합에서...
+        // 최대는? 합 - 1/16
+        // 최소 1/16
         const maxRatio = left + right - 1 / 16;
 
+        // 현재 마우스 위치와, 꾹 누르기 시작한 위치와의 차이
+        const diff = e.clientX - startX;
+        // 마우스가 움직인 변위가... 전체 크기에서 비율로 얼마를 차지하는지?
         const diffAsRatio = diff / width;
+
+        // const 최댓값 = 1 / 2;
+        // Math.min(1, 최댓값); // => 1/2 최댓값까지 가능!
+        // Math.min(1 / 3, 1 / 2); // => 1/3
+
+        // const 최솟값 = 1 / 16;
+        // Math.max(1 / 2, 최솟값); // => 1/2
+        // Math.max(0, 최솟값); // => 1/16
+
         const newLeft = Math.max(
           Math.min(left + diffAsRatio, maxRatio),
           1 / 16
@@ -43,58 +49,60 @@ function ResizableBoxes() {
         newSegments[changingIndex] = newLeft;
         newSegments[changingIndex + 1] = newRight;
         setSegments(newSegments);
-        console.log(newSegments);
       }
     }
+
+    // 1. 마우스를 떼었을 때... 더 이상 변경되지 않게 해주는 친구
     function upHandler() {
+      // 2.
       setIsChanging(false);
     }
+    // 이 두 핸들러를 윈도우(화면)에 달아줌
     window.addEventListener("mousemove", moveHandler);
     window.addEventListener("mouseup", upHandler);
+
+    // cleanup => 3.
     return () => {
+      // 핸들러를 윈도우에서 떼어줌...
       window.removeEventListener("mousemove", moveHandler);
       window.removeEventListener("mouseup", upHandler);
     };
+    // 의존성 배열에 isChanging이 false로 변하면?
   }, [isChanging, oldSegments, startX]);
 
   return (
-    <div>
-      <div
+    <table className="selectedContainer flex flex-row">
+      <tr
         style={{ width: `${512}px`, height: "200px" }}
         className="flex flex-row"
       >
         {segments.map((segment, i) => (
-          <>
-            <div
-              style={{
-                width: `${segment * 100}%`,
-                backgroundColor: colors[i],
-              }}
-              className="h-full"
-            >
-              메롱
-            </div>
-            <div
-              className="bg-white w-2 p-0 m-0 h-full cursor-pointer"
-              onMouseDown={(e) => {
-                console.log("x", e.clientX, "y", e.clientY);
-                setStartX(e.clientX);
-                setChangingIndex(i);
-                setOldSegments(segments);
-                setIsChanging(true);
-              }}
-            ></div>
-          </>
+          <td
+            className="flex flex-row p-0"
+            key={"#ffffff" + "-" + i}
+            style={{
+              width: `${segment * 100}%`,
+              backgroundColor: colors[i],
+            }}
+          >
+            <div className="h-full w-full">#ffffff</div>
+            {i < segments.length - 1 && (
+              <div
+                className="bg-white w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
+                //시작 좌표를 기록하기 위해 모서리를 꾹 누르면
+                onMouseDown={(e) => {
+                  console.log("x", e.clientX, "y", e.clientY);
+                  setStartX(e.clientX); // 시작 x좌표
+                  setChangingIndex(i); // 바꾸려는 그 인덱스
+                  setOldSegments(segments); // 시작할 때 박스 크기
+                  setIsChanging(true); // 변경 중임을 알려주는 flag
+                }}
+              ></div>
+            )}
+          </td>
         ))}
-      </div>
-      <p>
-        isChanging: {String(isChanging)}, changingIndex: {changingIndex}
-      </p>
-      <p>
-        startX: {startX}, nowX: {nowX}, diff: {nowX - startX}
-      </p>
-      <p>segments: {JSON.stringify(segments)}</p>
-    </div>
+      </tr>
+    </table>
   );
   // https://tailwindcss.com/docs/cursor
 }
@@ -110,18 +118,18 @@ export default ResizableBoxes;
 기븐
 |  |  |    |
 1/4 1/4 1/2
-웬
+When
 오른쪽 경계를 클릭하면
-덴
+Then
 변경 중 모드 => 시작 좌표를 기록!
-웬
+When
 마우스를 움직이면
-덴
+Then
 시작 좌표와 현재 좌표의 차이만큼...
 |  |    |  |
 왼쪽에 있는 칸은 늘어나고, 오른쪽에 있는 칸은 줄어들어야 한다
-웬
+When
 마우스를 최소간격보다 멀리 가면... 더 이상 반영되지 않는다!
-덴
+Then
 오른쪽에 있는 칸이 최소간격보다 작아질 수 없으니...
 */

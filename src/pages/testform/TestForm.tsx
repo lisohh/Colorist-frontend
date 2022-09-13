@@ -66,6 +66,7 @@ function TestForm() {
             (3색 이상, 10칸 이상 배색)
           </h2>
         </div>
+
         <Pallete />
         {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
         {/* <input type="text" /> */}

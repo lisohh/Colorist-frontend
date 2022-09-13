@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-const colors = ["red", "green", "blue"];
-
 const width = 512;
 
-function ResizableBoxes() {
-  const [segments, setSegments] = useState([1 / 4, 1 / 4, 1 / 2]);
-  const [oldSegments, setOldSegments] = useState([1 / 4, 1 / 4, 1 / 2]);
+// 구조 분해 할당
+// https://beta.reactjs.org/learn/passing-props-to-a-component
+function ResizableBoxes({
+  colors,
+  deleteSelected,
+}: {
+  colors: string[];
+  deleteSelected: (targetIndex: number) => void;
+}) {
+  const BOX_COUNT = colors.length;
+
+  const [segments, setSegments] = useState<number[]>(
+    Array(BOX_COUNT).fill(1 / BOX_COUNT)
+  );
+  const [oldSegments, setOldSegments] = useState<number[]>(
+    Array(BOX_COUNT).fill(1 / BOX_COUNT)
+  );
   const [startX, setStartX] = useState(0);
   const [changingIndex, setChangingIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
@@ -72,23 +84,22 @@ function ResizableBoxes() {
 
   return (
     <table className="selectedContainer flex flex-row">
-      <tr
-        style={{ width: `${512}px`, height: "200px" }}
-        className="flex flex-row"
-      >
+      <tr className="flex flex-row w-1/2 h-48">
         {segments.map((segment, i) => (
           <td
             className="flex flex-row p-0"
-            key={"#ffffff" + "-" + i}
+            key={i}
             style={{
               width: `${segment * 100}%`,
               backgroundColor: colors[i],
             }}
           >
-            <div className="h-full w-full">#ffffff</div>
+            <div className="h-full w-11/12" onClick={() => deleteSelected(i)}>
+              {colors[i]}
+            </div>
             {i < segments.length - 1 && (
               <div
-                className="bg-white w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
+                className="bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
                 //시작 좌표를 기록하기 위해 모서리를 꾹 누르면
                 onMouseDown={(e) => {
                   console.log("x", e.clientX, "y", e.clientY);

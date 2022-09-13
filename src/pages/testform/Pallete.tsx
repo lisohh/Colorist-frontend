@@ -18,7 +18,9 @@ const BOX_COUNT = 10;
 const WHITE_HEX = "#ffffff";
 
 function Pallete() {
-  const [colors, setColors] = React.useState(Array(BOX_COUNT).fill(WHITE_HEX)); // 문자열
+  const [colors, setColors] = React.useState<string[]>(
+    Array(BOX_COUNT).fill(WHITE_HEX)
+  ); // 문자열
 
   //6번 - addSelected 함수를 만들어
   function addSelected(hex: string) {
@@ -52,7 +54,7 @@ function Pallete() {
   return (
     <Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
       <input type="text" name="colors" value={JSON.stringify(colors)} hidden />
-      <ResizableBoxes />
+      <ResizableBoxes colors={colors} deleteSelected={deleteSelected} />
       <div id="pallete-box">
         <Tabs.Root
           defaultValue={Object.keys(allPallete)[0]}

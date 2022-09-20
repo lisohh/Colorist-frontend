@@ -108,7 +108,7 @@ function ResizableBoxes({
                   setOldSegments(segments); // 시작할 때 박스 크기
                   setIsChanging(true); // 변경 중임을 알려주는 flag
                 }}
-              ></div>
+              />
             )}
           </td>
         ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const width = 512;
+const width = 240;
 
 // 구조 분해 할당
 // https://beta.reactjs.org/learn/passing-props-to-a-component
@@ -83,8 +83,11 @@ function ResizableBoxes({
   }, [isChanging, oldSegments, startX]);
 
   return (
-    <table className="selectedContainer flex flex-row">
-      <tr className="flex flex-row w-1/2 h-48">
+    <table
+      className="selectedContainer flex flex-row"
+      style={{ width: `${width}px` }}
+    >
+      <tr className="flex flex-row h-48">
         {segments.map((segment, i) => (
           <td
             className="flex flex-row p-0"

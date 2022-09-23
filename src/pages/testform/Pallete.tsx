@@ -59,14 +59,16 @@ function Pallete() {
         value={JSON.stringify(colors)}
         hidden={true}
       />
-      <ResizableBoxes
-        colors={colors.slice(0, BOX_COUNT)}
-        deleteSelected={deleteSelected} // 1을 받으면 1을 삭제
-      />
-      <ResizableBoxes
-        colors={colors.slice(BOX_COUNT, 2 * BOX_COUNT)}
-        deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
-      />
+      <div className="flex flex-row">
+        <ResizableBoxes
+          colors={colors.slice(0, BOX_COUNT)}
+          deleteSelected={deleteSelected} // 1을 받으면 1을 삭제
+        />
+        <ResizableBoxes
+          colors={colors.slice(BOX_COUNT, 2 * BOX_COUNT)}
+          deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
+        />
+      </div>
       <div id="pallete-box">
         <Tabs.Root
           defaultValue={Object.keys(allPallete)[0]}

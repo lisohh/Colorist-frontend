@@ -11,19 +11,8 @@ import { saveColors } from "~/api"; // absolute 절대
 // 탭의 색깔에 명도/채도가 반영되면 좋겠다
 
 function TestForm() {
-  //9번 - 기본 텍스트를 넣어주기 위해 기본 텍스트를 상태로 만들어준다.
-  const [mainColor, setMainColor] = React.useState("주조색:");
-
-  const [subColor, setSubColor] = React.useState("보조색:");
-
-  const [pointColor, setPointColor] = React.useState("강조색:");
-
   // const [colorSelection, setColorSelection] =
   // React.useState("주조색:\n보조색:\n강조색:");
-
-  const [explanation, setExplanation] = React.useState(
-    "컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"
-  );
 
   return (
     <article className="test-form">
@@ -31,23 +20,41 @@ function TestForm() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          const rawData = new FormData(event.target as HTMLFormElement);
+          const formData = new FormData(event.target as HTMLFormElement);
 
-          const colors = rawData.get("colors");
+          const colors = formData.get("colors");
+          const rawData = {
+            box: JSON.parse(colors as string),
+            ju: formData.getAll("ju"),
+            bo: formData.getAll("bo"),
+            gang: formData.getAll("gang"),
+            answer: formData.getAll("answer"),
+          };
+
           if (colors !== null) {
             // 전처리, preprocess
             const data = [
               {
+                box: rawData.box.slice(0, 10),
                 jubogang: {
-                  ju: rawData.get("ju"),
-                  bo: rawData.get("bo"),
-                  gang: rawData.get("gang"),
+                  ju: rawData.ju[0],
+                  bo: rawData.bo[0],
+                  gang: rawData.gang[0],
                 },
-                box: JSON.parse(colors as string),
-                answer: rawData.get("answer"),
+                answer: rawData.answer[0],
+              },
+              {
+                box: rawData.box.slice(10, 20),
+                jubogang: {
+                  ju: rawData.ju[1],
+                  bo: rawData.bo[1],
+                  gang: rawData.gang[1],
+                },
+                answer: rawData.answer[1],
               },
             ];
-            saveColors(data as MyColors[]);
+            alert(JSON.stringify(data));
+            // saveColors(data as MyColors[]);
           }
         }}
       >
@@ -77,12 +84,8 @@ function TestForm() {
         <input
           id="color-selection"
           placeholder="주조색:"
-          value={mainColor}
-          // change event의 target인 textarea의 새로 변경된 값을
-          // react의 mainColor 상태에 세팅
-          // 값을 동기화해주는 거에요.
-          // https://beta.reactjs.org/learn/reacting-to-input-with-state
-          onChange={(event) => setMainColor(event.target.value)}
+          type="text"
+          name="ju"
         />
         <label className="color-label" htmlFor="sub-color">
           보조색
@@ -90,8 +93,8 @@ function TestForm() {
         <input
           id="color-selection"
           placeholder="보조색:"
-          value={subColor}
-          onChange={(event) => setSubColor(event.target.value)}
+          type="text"
+          name="bo"
         />
         <label className="color-label" htmlFor="point-color">
           강조색
@@ -99,17 +102,16 @@ function TestForm() {
         <input
           id="color-selection"
           placeholder="강조색:"
-          value={pointColor}
-          onChange={(event) => setPointColor(event.target.value)}
+          type="text"
+          name="gang"
         />
         <label className="color-label" htmlFor="explanation" id="explanation">
           배색 설명
         </label>
         <textarea
           id="explanation"
+          name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-          value={explanation}
-          onChange={(event) => setExplanation(event.target.value)}
         />
         <p id="allColor">주보강 기입</p>
         <label className="color-label" htmlFor="main-color">
@@ -120,8 +122,6 @@ function TestForm() {
           type="text"
           name="ju"
           placeholder="주조색:"
-          value={mainColor}
-          onChange={(event) => setMainColor(event.target.value)}
         />
         <label className="color-label" htmlFor="sub-color">
           보조색
@@ -131,8 +131,6 @@ function TestForm() {
           type="text"
           name="bo"
           placeholder="보조색:"
-          value={subColor}
-          onChange={(event) => setSubColor(event.target.value)}
         />
         <label className="color-label" htmlFor="point-color">
           강조색
@@ -142,8 +140,6 @@ function TestForm() {
           type="text"
           name="gang"
           placeholder="강조색:"
-          value={pointColor}
-          onChange={(event) => setPointColor(event.target.value)}
         />
         <label className="color-label" htmlFor="explanation" id="explanation">
           배색 설명
@@ -152,8 +148,6 @@ function TestForm() {
           id="explanation"
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-          value={explanation}
-          onChange={(event) => setExplanation(event.target.value)}
         />
         <button id="save-button" type="submit" className="bg-yellow-300">
           저장하기

@@ -3,6 +3,7 @@ import Pallete from "./Pallete";
 import "./TestForm.css";
 import QuizList from "~/pages/qlists/quizList.json";
 import { saveColors } from "~/api"; // absolute 절대
+import { Link, useParams } from "react-router-dom";
 // import { saveColors } from "../../api"; // relative 상대
 
 // 8월 16일 2번
@@ -11,12 +12,16 @@ import { saveColors } from "~/api"; // absolute 절대
 // 탭의 색깔에 명도/채도가 반영되면 좋겠다
 
 function TestForm() {
-  // const [colorSelection, setColorSelection] =
-  // React.useState("주조색:\n보조색:\n강조색:");
+  const params = useParams(); // url에 있는 파라미터(path variable, dynamic routes)를 가져옴!
+  const quizId = parseInt(params["quizId"] as string); // ex 1
+  const quiz = QuizList.quiz[quizId - 1]; // index는 0부터 셈으로...
 
   return (
     <article className="test-form">
       {/* 0825 합동코칭 - 연결하기위해 form으로 감싸고 submit  */}
+      <Link to={`/quiz/${Math.min(Math.floor(Math.random() * 26 + 1), 26)}`}>
+        무작위 문제 보기
+      </Link>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -60,17 +65,11 @@ function TestForm() {
       >
         <div className="quiz-paragraph">
           <a className="category" href="">
-            {/* {QuizList.quiz[0].class} */}
-            "2022년도 1회차 기출"
+            {quiz.class}
           </a>
-          <h1 className="text-2xl mb-2">
-            Q.
-            {
-              /* {QuizList[0].quizContent} */ "따뜻하고 풍요로운 이미지와 차갑고 쓸쓸한 이미지 두가지를 연출해 보세요."
-            }
-          </h1>
+          <h1 className="text-2xl mb-2">Q. {quiz.quizContent}</h1>
           <h2 id="condition" className="text-lg">
-            (3색 이상, 10칸 이상 배색)
+            {quiz.condition}
           </h2>
         </div>
 

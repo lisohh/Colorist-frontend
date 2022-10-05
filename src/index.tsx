@@ -19,6 +19,11 @@ ReactDOM.render(
         <Nav />
         <Routes>
           <Route path="/" element={<TestForm />} />
+
+          <Route path="/quiz/:quizId" element={<TestForm />} />
+          {/* /problem/:problemId */}
+          {/* /problem/1 */}
+          {/* /problem/2 */}
           <Route path="/login/*" element={<Login />} />
           <Route path="/mypage/*" element={<Mypage />} />
           <Route path="/qlists/*" element={<Qlists />} />

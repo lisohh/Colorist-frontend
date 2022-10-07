@@ -4,8 +4,8 @@ import menuIcon from "../img/icons8-menu.svg";
 
 export function DrawerOpenButton() {
   return (
-    <label role="button" htmlFor="my-drawer" className="drawer-button">
-      <img src={menuIcon} />
+    <label role="button" htmlFor="my-drawer">
+      <img src={menuIcon} className="h-6 w-6" alt="메뉴 열기" />
     </label>
   );
 }

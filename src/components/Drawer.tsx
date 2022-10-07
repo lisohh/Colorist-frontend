@@ -1,10 +1,11 @@
 import * as React from "react";
 import "./Nav.css";
+import menuIcon from "../img/icons8-menu.svg";
 
 export function DrawerOpenButton() {
   return (
     <label role="button" htmlFor="my-drawer" className="drawer-button">
-      <img src="src/img/icons8-menu.svg"></img>
+      <img src={menuIcon} />
     </label>
   );
 }
@@ -12,7 +13,7 @@ export function DrawerOpenButton() {
 function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div className="drawer">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" hidden />
       {/* drawer-content안에 children을 넣으면 된다. */}
       <div className="drawer-content">{children}</div>
       <div className="drawer-side">

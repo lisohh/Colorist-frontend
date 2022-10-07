@@ -7,19 +7,15 @@ const YELLOW_HEX = "#f5cd2f";
 function Nav() {
   return (
     <nav>
-      <ul>
+      <ul className="flex flex-row justify-between p-2">
         <li>
           <DrawerOpenButton />
         </li>
-      </ul>
-      <ul>
         <li>
           <a href="./">
             <strong>Color.list</strong>
           </a>
         </li>
-      </ul>
-      <ul>
         <li>
           <a href="./Login" className="login">
             login

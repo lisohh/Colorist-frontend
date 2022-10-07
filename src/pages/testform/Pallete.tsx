@@ -58,6 +58,7 @@ function Pallete() {
         name="colors"
         value={JSON.stringify(colors)}
         hidden={true}
+        readOnly
       />
       <div className="flex flex-row">
         <ResizableBoxes

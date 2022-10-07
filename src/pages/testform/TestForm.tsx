@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { useId } from "react";
 import Pallete from "./Pallete";
 import "./TestForm.css";
 import QuizList from "~/pages/qlists/quizList.json";
 import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
+
 // import { saveColors } from "../../api"; // relative 상대
 
 // 8월 16일 2번
@@ -13,7 +14,8 @@ import { Link, useParams } from "react-router-dom";
 
 function TestForm() {
   const params = useParams(); // url에 있는 파라미터(path variable, dynamic routes)를 가져옴!
-  const quizId = parseInt(params["quizId"] as string); // ex 1
+  // ?? 널 병합 연산자. 왼쪽이 null이나 undefined면 오른쪽의 값을 fallback으로 써라
+  const quizId = parseInt((params["quizId"] as string | undefined) ?? "1"); // ex 1
   const quiz = QuizList.quiz[quizId - 1]; // index는 0부터 셈으로...
 
   return (
@@ -23,6 +25,7 @@ function TestForm() {
         무작위 문제 보기
       </Link>
       <form
+        className="flex flex-col gap-2"
         onSubmit={(event) => {
           event.preventDefault();
           const formData = new FormData(event.target as HTMLFormElement);
@@ -77,74 +80,29 @@ function TestForm() {
         {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
         {/* <input type="text" /> */}
         <p id="allColor">주보강 기입</p>
-        <label className="color-label" htmlFor="main-color">
-          주조색
-        </label>
-        <input
-          id="color-selection"
-          placeholder="주조색:"
-          type="text"
-          name="ju"
-        />
-        <label className="color-label" htmlFor="sub-color">
-          보조색
-        </label>
-        <input
-          id="color-selection"
-          placeholder="보조색:"
-          type="text"
-          name="bo"
-        />
-        <label className="color-label" htmlFor="point-color">
-          강조색
-        </label>
-        <input
-          id="color-selection"
-          placeholder="강조색:"
-          type="text"
-          name="gang"
-        />
+        <ColorSelectionInput label="주조색" name="ju" />
+        <ColorSelectionInput label="보조색" name="bo" />
+        <ColorSelectionInput label="강조색" name="gang" />
+
         <label className="color-label" htmlFor="explanation" id="explanation">
           배색 설명
         </label>
         <textarea
           id="explanation"
+          className="p-3 explanation"
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         />
         <p id="allColor">주보강 기입</p>
-        <label className="color-label" htmlFor="main-color">
-          주조색
-        </label>
-        <input
-          id="color-selection"
-          type="text"
-          name="ju"
-          placeholder="주조색:"
-        />
-        <label className="color-label" htmlFor="sub-color">
-          보조색
-        </label>
-        <input
-          id="color-selection"
-          type="text"
-          name="bo"
-          placeholder="보조색:"
-        />
-        <label className="color-label" htmlFor="point-color">
-          강조색
-        </label>
-        <input
-          id="color-selection"
-          type="text"
-          name="gang"
-          placeholder="강조색:"
-        />
-        <label className="color-label" htmlFor="explanation" id="explanation">
+        <ColorSelectionInput label="주조색" name="ju" />
+        <ColorSelectionInput label="보조색" name="bo" />
+        <ColorSelectionInput label="강조색" name="gang" />
+        <label className="color-label" htmlFor="explanation" id="explanation-2">
           배색 설명
         </label>
         <textarea
-          id="explanation"
+          id="explanation-2"
+          className="p-3"
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         />
@@ -157,3 +115,23 @@ function TestForm() {
 }
 
 export default TestForm;
+
+function ColorSelectionInput({ label, name }: { label: string; name: string }) {
+  const id = useId();
+  const placeholder = `${label}:`;
+
+  return (
+    <>
+      <label className="color-label" htmlFor={id}>
+        {label}
+      </label>
+      <input
+        id={id}
+        className="p-3 color-selection"
+        type="text"
+        placeholder={placeholder}
+        name={name}
+      />
+    </>
+  );
+}

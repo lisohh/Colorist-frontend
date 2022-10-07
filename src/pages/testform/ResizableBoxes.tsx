@@ -87,35 +87,37 @@ function ResizableBoxes({
       className="selectedContainer flex flex-row"
       style={{ width: `${width}px` }}
     >
-      <tr className="flex flex-row h-48">
-        {segments.map((segment, i) => (
-          <td
-            className="flex flex-row p-0"
-            key={i}
-            style={{
-              width: `${segment * 100}%`,
-              backgroundColor: colors[i],
-            }}
-          >
-            <div className="h-full w-11/12" onClick={() => deleteSelected(i)}>
-              {colors[i]}
-            </div>
-            {i < segments.length - 1 && (
-              <div
-                className="bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
-                //시작 좌표를 기록하기 위해 모서리를 꾹 누르면
-                onMouseDown={(e) => {
-                  console.log("x", e.clientX, "y", e.clientY);
-                  setStartX(e.clientX); // 시작 x좌표
-                  setChangingIndex(i); // 바꾸려는 그 인덱스
-                  setOldSegments(segments); // 시작할 때 박스 크기
-                  setIsChanging(true); // 변경 중임을 알려주는 flag
-                }}
-              />
-            )}
-          </td>
-        ))}
-      </tr>
+      <tbody>
+        <tr className="flex flex-row h-48">
+          {segments.map((segment, i) => (
+            <td
+              className="flex flex-row p-0"
+              key={i}
+              style={{
+                width: `${segment * 100}%`,
+                backgroundColor: colors[i],
+              }}
+            >
+              <div className="h-full w-11/12" onClick={() => deleteSelected(i)}>
+                {colors[i]}
+              </div>
+              {i < segments.length - 1 && (
+                <div
+                  className="bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
+                  //시작 좌표를 기록하기 위해 모서리를 꾹 누르면
+                  onMouseDown={(e) => {
+                    console.log("x", e.clientX, "y", e.clientY);
+                    setStartX(e.clientX); // 시작 x좌표
+                    setChangingIndex(i); // 바꾸려는 그 인덱스
+                    setOldSegments(segments); // 시작할 때 박스 크기
+                    setIsChanging(true); // 변경 중임을 알려주는 flag
+                  }}
+                />
+              )}
+            </td>
+          ))}
+        </tr>
+      </tbody>
     </table>
   );
   // https://tailwindcss.com/docs/cursor

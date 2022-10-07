@@ -94,14 +94,12 @@ label#explanation {
 }
 
 input.color-selection {
-  height: 3rem;
   border-radius: 10px;
   background-color: #e6e6e6;
   border-style: none;
 }
 
 textarea.explanation {
-  height: 14rem;
   border-radius: 10px;
   background-color: #e6e6e6;
   border-style: none;

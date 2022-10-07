@@ -89,7 +89,7 @@ function TestForm() {
         </label>
         <textarea
           id="explanation"
-          className="p-3 explanation"
+          className="explanation p-3 min-h-32"
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         />
@@ -102,11 +102,11 @@ function TestForm() {
         </label>
         <textarea
           id="explanation-2"
-          className="p-3"
+          className="explanation p-3 min-h-32"
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         />
-        <button id="save-button" type="submit" className="bg-yellow-300">
+        <button type="submit" className="bg-yellow-300 p-4 rounded-xl">
           저장하기
         </button>
       </form>

@@ -1,8 +1,8 @@
 import * as React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import "./pico.css";
+// import "./pico.css";
 import Notfound from "./Notfound";
 import Drawer from "./components/Drawer";
 import Nav from "./components/Nav";
@@ -12,7 +12,11 @@ import Mypage from "./pages/mypage/Mypage";
 import Qlists from "./pages/qlists/Qlists";
 import ResizableBoxes from "./pages/testform/ResizableBoxes";
 
-ReactDOM.render(
+const rootContainer = document.getElementById("root")!;
+
+const root = ReactDOM.createRoot(rootContainer);
+
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Drawer>
@@ -32,6 +36,5 @@ ReactDOM.render(
         </Routes>
       </Drawer>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );

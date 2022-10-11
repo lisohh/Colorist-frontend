@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-const width = 240;
+import React, { useEffect, useRef, useState } from "react";
 
 // 구조 분해 할당
 // https://beta.reactjs.org/learn/passing-props-to-a-component
@@ -23,6 +21,8 @@ function ResizableBoxes({
   const [changingIndex, setChangingIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
 
+  const tableRef = useRef<HTMLTableElement>(null);
+
   useEffect(() => {
     //마우스가 움직일 때 마다 박스 크기를 조절해주는 핸들러
     function moveHandler(e: MouseEvent) {
@@ -34,11 +34,15 @@ function ResizableBoxes({
         // 왼쪽 오른쪽 박스 너비의 합에서...
         // 최대는? 합 - 1/16
         // 최소 1/16
-        const maxRatio = left + right - 1 / 16;
+        const MIN_RATIO = 1 / 32;
+        const maxRatio = left + right - MIN_RATIO;
 
         // 현재 마우스 위치와, 꾹 누르기 시작한 위치와의 차이
         const diff = e.clientX - startX;
         // 마우스가 움직인 변위가... 전체 크기에서 비율로 얼마를 차지하는지?
+
+        const width = tableRef.current?.clientWidth ?? 480;
+
         const diffAsRatio = diff / width;
 
         // const 최댓값 = 1 / 2;
@@ -51,11 +55,11 @@ function ResizableBoxes({
 
         const newLeft = Math.max(
           Math.min(left + diffAsRatio, maxRatio),
-          1 / 16
+          MIN_RATIO
         );
         const newRight = Math.max(
           Math.min(right - diffAsRatio, maxRatio),
-          1 / 16
+          MIN_RATIO
         );
         const newSegments = [...oldSegments];
         newSegments[changingIndex] = newLeft;
@@ -83,10 +87,7 @@ function ResizableBoxes({
   }, [isChanging, oldSegments, startX]);
 
   return (
-    <table
-      className="selectedContainer flex flex-row"
-      style={{ width: `${width}px` }}
-    >
+    <table ref={tableRef} className="selectedContainer w-full">
       <tbody>
         <tr className="flex flex-row h-48">
           {segments.map((segment, i) => (
@@ -98,9 +99,10 @@ function ResizableBoxes({
                 backgroundColor: colors[i],
               }}
             >
-              <div className="h-full w-11/12" onClick={() => deleteSelected(i)}>
-                {colors[i]}
-              </div>
+              <div
+                className="h-full w-11/12"
+                onClick={() => deleteSelected(i)}
+              />
               {i < segments.length - 1 && (
                 <div
                   className="bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"

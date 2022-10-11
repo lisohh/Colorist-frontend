@@ -9,22 +9,31 @@ import Pagination from "../../components/Pagination";
 function Mypage() {
   return (
     <div className="mypage">
-      <article className="profile">
-        <a href="#" className="profileImg">
-          <img className="bubble" src="/blue_bubble.jpg"></img>
-        </a>
-        <div className="profile-text">
-          <a href="#" className="edit-button">
-            프로필 편집
-          </a>
-          <h2>닉네임은 자몽미믹토끼야아아아</h2>
-          <h5>
-            자기소개 안녕하세요
-            <br /> 저는 누구누구입니다.
-          </h5>
+      <article className="flex flex-col gap-2">
+        <div className="w-full flex flex-row pt-16 pb-16">
+          <div className="h-full w-1/3 flex justify-center align-middle">
+            <a href="#" className="avatar">
+              <div className="w-48 h-48 rounded-full">
+                <img src="/blue_bubble.jpg" />
+              </div>
+            </a>
+          </div>
+          <div className="flex flex-col gap-4">
+            <a href="#" className="btn btn-secondary">
+              프로필 편집
+            </a>
+            <div>
+              <h3 className="text-lg">닉네임</h3>
+              자몽
+            </div>
+            <div>
+              <h3 className="text-lg">자기소개</h3>
+              안녕하세요. 저는 누구누구입니다.
+            </div>
+          </div>
         </div>
-        <div className="question-list">
-          <h3 className="solved-list-heading ml-4 mt-4">푼 문제 목록</h3>
+        <div className="flex flex-col gap-2">
+          <h3 className="text-3xl">푼 문제 목록</h3>
           <SelectGroup />
           <table
             className="table table-zebra w-full"
@@ -57,7 +66,7 @@ function Mypage() {
           </table>
         </div>
         <footer className="flex flex-row justify-between">
-          <button type="button" className="w-20 bg-yellow-300">
+          <button type="button" className="btn btn-secondary">
             출력
           </button>
           <Pagination />

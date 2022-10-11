@@ -1,5 +1,4 @@
 import React from "react";
-import "./Mypage.css";
 import { problemList } from "../qlists/problemList";
 import SelectGroup from "../../components/SelectGroup";
 import Pagination from "../../components/Pagination";
@@ -10,8 +9,8 @@ function Mypage() {
   return (
     <div className="mypage">
       <article className="flex flex-col gap-2">
-        <div className="w-full flex flex-row pt-16 pb-16">
-          <div className="h-full w-1/3 flex justify-center align-middle">
+        <div className="w-full flex flex-col sm:flex-row pt-16 pb-16 gap-2">
+          <div className="h-full w-full sm:w-1/2 lg:w-1/3 flex justify-center align-middle">
             <a href="#" className="avatar">
               <div className="w-48 h-48 rounded-full">
                 <img src="/blue_bubble.jpg" />

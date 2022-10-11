@@ -100,7 +100,7 @@ function ResizableBoxes({
               }}
             >
               <div
-                className="h-full w-11/12"
+                className="h-full w-full"
                 onClick={() => deleteSelected(i)}
               />
               {i < segments.length - 1 && (

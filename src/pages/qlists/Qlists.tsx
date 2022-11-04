@@ -46,7 +46,9 @@ function Mypage() {
         </div>
         <section className="save-arrange"></section>
         <div className="most-solved-list">
-          <h3 className="mostSolved-Q-list-heading ml-4">가장 많이 푼 문제</h3>
+          <h1 className="mostSolved-Q-list-heading gap-4 ml-4">
+            가장 많이 푼 문제
+          </h1>
           <table
             className="table table-zebra w-full"
             aria-labelledby="Mostsolved-list-heading"

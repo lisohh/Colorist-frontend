@@ -4,6 +4,7 @@ import "./TestForm.css";
 import QuizList from "~/pages/qlists/quizList.json";
 import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
+import Button from "~/components/Button";
 
 // import { saveColors } from "../../api"; // relative 상대
 
@@ -106,9 +107,7 @@ function TestForm() {
           name="answer"
           placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
         />
-        <button type="submit" className="bg-yellow-300 p-4 rounded-xl">
-          저장하기
-        </button>
+        <Button type="submit">저장할래요</Button>
       </form>
     </article>
   );

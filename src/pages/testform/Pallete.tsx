@@ -84,7 +84,8 @@ function Pallete() {
               <Tabs.Trigger
                 key={value}
                 value={value}
-                className="bg-yellow-200 tab tab-lifted p-1 h-10 leading-none text-black"
+                className="tab tab-lifted p-1 h-10 leading-none text-black"
+                style={{ backgroundColor: allPallete[value][2].hex }}
                 type="button"
               >
                 {value}

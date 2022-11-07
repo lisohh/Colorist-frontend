@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Button from "~/components/Button";
+import VerticalForm from "~/components/VerticalForm";
 
 function Login() {
   // https://react-hook-form.com/get-started
@@ -22,16 +23,19 @@ function Login() {
   });
 
   return (
-    <article className="login-form max-w-screen-md mx-auto p-4">
-      {/* handleSubmit은 폼이 제출 되었을 때 form의 data를 쏙 꺼내준다 */}
-      {/* 이걸 서버로 보내주면 끝! */}
-      <form
-        className="flex flex-col gap-3"
-        onSubmit={handleSubmit((data) => {
-          alert(JSON.stringify(data));
-        })}
-      >
-        <h2 className="text-4xl">Login</h2>
+    <VerticalForm
+      title="로그인"
+      submitLabel="로그인하기"
+      onSubmit={handleSubmit((data) => {
+        alert(JSON.stringify(data));
+      })}
+      after={
+        <Button as={Link} to="/register" className="text-center">
+          회원가입으로 이동
+        </Button>
+      }
+    >
+      <>
         <label className="flex flex-col gap-2">
           <span className="text-xl">이메일</span>
           <input
@@ -55,14 +59,8 @@ function Login() {
           />
         </label>
         {errors.password && <li role="alert">{errors.password.message}</li>}
-        <Button type="submit" className="w-full">
-          로그인
-        </Button>
-        <Button as={Link} to="/register" className="text-center">
-          회원가입으로 이동
-        </Button>
-      </form>
-    </article>
+      </>
+    </VerticalForm>
   );
 }
 

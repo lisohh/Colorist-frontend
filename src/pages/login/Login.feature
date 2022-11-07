@@ -1,6 +1,6 @@
 Feature: Login
 
-Scenario: login form을 만든다
+Scenario: login 할 수 있다
   Given login form 렌더하고
   When 이메일과 비밀번호를 입력하고
   When "로그인" button을 클릭하면

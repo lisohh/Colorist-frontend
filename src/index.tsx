@@ -7,6 +7,7 @@ import Notfound from "./Notfound";
 import Drawer from "./components/Drawer";
 import Nav from "./components/Nav";
 import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 import TestForm from "./pages/testform/TestForm";
 import Mypage from "./pages/mypage/Mypage";
 import Qlists from "./pages/qlists/Qlists";
@@ -29,6 +30,7 @@ root.render(
           {/* /problem/1 */}
           {/* /problem/2 */}
           <Route path="/login/*" element={<Login />} />
+          <Route path="/register/*" element={<Register />} />
           <Route path="/mypage/*" element={<Mypage />} />
           <Route path="/qlists/*" element={<Qlists />} />
           {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}

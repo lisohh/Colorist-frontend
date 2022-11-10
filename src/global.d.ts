@@ -7,3 +7,8 @@ type MyColors = {
   box: Array<{ color: string; width: number }>;
   answer: string;
 };
+
+type UserInfoT = {
+  email: string;
+  password: string;
+};

@@ -2,11 +2,13 @@ import React from "react";
 //1. bun add react-hook-form 을 터미널에 입력해서 설치
 //2. import useForm
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "~/components/Button";
 import VerticalForm from "~/components/VerticalForm";
+import * as api from "../../api";
 
 function Login() {
+  const navigate = useNavigate();
   // https://react-hook-form.com/get-started
   //3. register과 handleSubmit를 만들어서, 객체를 구조분해 할당(destructuring)...
 
@@ -26,8 +28,15 @@ function Login() {
     <VerticalForm
       title="로그인"
       submitLabel="로그인하기"
-      onSubmit={handleSubmit((data) => {
-        alert(JSON.stringify(data));
+      onSubmit={handleSubmit(async (data) => {
+        const response = await api.login(data);
+
+        if (response.ok) {
+          const result = await response.json(); // body로 온 json을 파싱함!
+
+          alert(JSON.stringify(result));
+          navigate("/");
+        }
       })}
       after={
         <Button as={Link} to="/register" className="text-center">

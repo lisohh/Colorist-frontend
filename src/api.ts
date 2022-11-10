@@ -16,3 +16,15 @@ function post<T>(path: string, data: T) {
 export function saveColors(data: MyColors[]) {
   return post("/colors", data);
 }
+
+// 회원가입
+export function join(data: UserInfoT) {
+  return post("/auth/join", data);
+}
+
+// login
+export function login(data: UserInfoT) {
+  return post("/auth/login", data);
+}
+
+// 백엔드에서 api schema를 정의해서 type과 client generation을 해주면 좋음...

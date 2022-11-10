@@ -8,7 +8,7 @@ import Button from "~/components/Button";
 type VerticalFormProps = {
   title: string;
   onSubmit: (event: React.FormEvent) => void;
-  children: React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   submitLabel: string;
   after?: React.ReactElement | null;
 };

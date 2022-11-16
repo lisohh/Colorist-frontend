@@ -12,6 +12,7 @@ import TestForm from "./pages/testform/TestForm";
 import Mypage from "./pages/mypage/Mypage";
 import Qlists from "./pages/qlists/Qlists";
 import ResizableBoxes from "./pages/testform/ResizableBoxes";
+import Root from "./pages/root/Root";
 
 const rootContainer = document.getElementById("root")!;
 
@@ -23,7 +24,7 @@ root.render(
       <Drawer>
         <Nav />
         <Routes>
-          <Route path="/" element={<TestForm />} />
+          <Route path="/" element={<Root />} />
 
           <Route path="/quiz/:quizId" element={<TestForm />} />
           {/* /problem/:problemId */}

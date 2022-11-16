@@ -1,21 +1,31 @@
 import React, { forwardRef, type ForwardedRef } from "react";
 
+// object type
+// keyof
+// indexed type
+// optional
+// partial
+
+// ref
+// forwardRef
+
 // https://www.typescriptlang.org/docs/handbook/2/objects.html
 type DataT = {
   email: string;
   password: string;
 };
 
-let a: DataT = {
-  email: "test@naver.com",
-  password: "test",
+let b: DataT = {
+  email: "twinstae@naver.com",
+  password: "3",
 };
 
 // https://www.typescriptlang.org/docs/handbook/2/keyof-types.html
-type DataKeys = keyof DataT; // 'email' | 'password'
+// 'email' | 'password'
+type DataKeys = keyof DataT;
 
-function hello(name: DataKeys) {
-  console.log(name);
+function hello(key: DataKeys) {
+  console.log(key);
 }
 
 hello("email");
@@ -23,11 +33,11 @@ hello("password");
 // hello("test"); // <- 타입 에러!
 
 // https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
-type ErrorData = {
-  [key in keyof DataT]: { message?: string };
+type ErrorData<T> = {
+  [key in keyof T]: { message?: string };
 };
 
-function logError(errors: ErrorData) {
+function logError(errors: ErrorData<DataT>) {
   console.error(errors);
 }
 // {
@@ -45,14 +55,14 @@ function logError(errors: ErrorData) {
 // }); // 다른 타입!
 
 logError({
-  email: { message: "test@naver.com" },
+  email: { message: "이메일 형식이 맞지 않습니다!" },
   password: {}, // message는 optional ? 이니까
 });
 
 // https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype
-type PartialE = Partial<ErrorData>;
+type PartialE = Partial<ErrorData<DataT>>;
 
-// {
+// type SelfPartialErrorData = {
 //   email?: {
 //       message: string;
 //   } | undefined;
@@ -82,12 +92,9 @@ logError2(
 );
 
 // 타입 관련 내용 정리해서 블로그에 써보셔도 좋을듯! - > 네,, 쓰면 무지 좋을 듯요.. 어렵겠지만..
-
+//첫번째 줄이 이해가 안감..
 type InputProps<T> = React.ComponentProps<"input"> & {
-  errors: Partial<{
-    [key in keyof T]: { message?: string };
-  }>; // T에 있는 key들 마다 { message: string }이 있을 수도 있고 없을 수도 있는~
-  name: string; // T에 있는 key들
+  errors: Partial<ErrorData<T>>;
   label: string;
 };
 

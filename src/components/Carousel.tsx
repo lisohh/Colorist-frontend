@@ -14,28 +14,35 @@ const colorGradation: string[] = [
   "linear-gradient(45deg, #3EECAC 0%, #EE74E1 100%)",
 ];
 
-function shuffle<T>(array: T[]) {
+function shuffle<T>(array: T[]): T[] {
   const copied = [...array];
   copied.sort(() => Math.random() - 0.5); //부수 효과
   return copied;
+}
+
+function repeat<T>(array: T[], times: number): T[] {
+  let result = array;
+  for (let i = 1; i < times; i++) {
+    result = result.concat(array);
+  }
+  return result;
 }
 
 function Carousel({ children }: { children: React.ReactElement[] }) {
   const start = 0;
   const end = children.length - 1;
 
-  const [colorShuffled, setColorShuffled] = useState(
-    [] as typeof colorGradation
-  );
+  const [colorShuffled, setColorShuffled] = useState<string[]>([]);
   useEffect(() => {
-    setColorShuffled(shuffle(colorGradation));
-  }, []);
+    const times = Math.ceil(children.length / colorGradation.length);
+    setColorShuffled(repeat(shuffle(colorGradation), times));
+  }, [children.length]);
   return (
     <header className="carousel w-full h-48">
       {children.map((child, i) => (
         <div
           id={"slide" + i}
-          style={{ background: `${colorGradation[i]}` }}
+          style={{ background: colorShuffled[i] }}
           className="carousel-item relative w-full bg-primary flex flex-col justify-center align-middle text-center"
         >
           <a

@@ -1,6 +1,6 @@
 import * as React from "react";
-import "./Nav.css";
 import menuIcon from "../img/icons8-menu.svg";
+import { Link } from "react-router-dom";
 
 export function DrawerOpenButton() {
   return (
@@ -23,7 +23,7 @@ function Drawer({ children }: { children: React.ReactNode }) {
             <a href="/Mypage">마이 페이지</a>
           </li>
           <li>
-            <a href="/Qlists">문제 목록</a>
+            <Link to="/quizs">문제 목록</Link>
           </li>
         </ul>
       </div>

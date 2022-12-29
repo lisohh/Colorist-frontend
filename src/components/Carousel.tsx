@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { repeat, shuffle } from "~/utils/array";
 
 const colorGradation: string[] = [
   "linear-gradient(45deg, #00C9FF 0%, #92FE9D 100%)",
@@ -13,20 +14,6 @@ const colorGradation: string[] = [
   "linear-gradient(45deg, #FEE140 0%, #FA709A 100%)",
   "linear-gradient(45deg, #3EECAC 0%, #EE74E1 100%)",
 ];
-
-function shuffle<T>(array: T[]): T[] {
-  const copied = [...array];
-  copied.sort(() => Math.random() - 0.5); //부수 효과
-  return copied;
-}
-
-function repeat<T>(array: T[], times: number): T[] {
-  let result = array;
-  for (let i = 1; i < times; i++) {
-    result = result.concat(array);
-  }
-  return result;
-}
 
 function Carousel({ children }: { children: React.ReactElement[] }) {
   const start = 0;

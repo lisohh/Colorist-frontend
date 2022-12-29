@@ -3,6 +3,7 @@ import "./Qlists.css";
 import Pagination from "../../components/Pagination";
 import { problemList } from "./problemList";
 import SelectGroup from "../../components/SelectGroup";
+import { Link } from "react-router-dom";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -29,16 +30,18 @@ function Mypage() {
               </tr>
             </thead>
             <tbody>
-              {problemList.slice(0, 5).map((item) => (
-                <tr>
-                  <td>
-                    <input type="checkbox" className="checkbox checkbox-" />
-                  </td>
-                  <td>{item.year}</td>
-                  <td>{item.round}</td>
-                  <td>{item.type}</td>
-                  <td>{item.title}</td>
-                  <td>{item.solvedAt}</td>
+              {problemList.slice(0, 5).map((item, i) => (
+                <tr key={i}>
+                  <Link to={"/quizs/" + item.id} className="contents">
+                    <td>
+                      <input type="checkbox" className="checkbox checkbox-" />
+                    </td>
+                    <td>{item.year}</td>
+                    <td>{item.round}</td>
+                    <td>{item.type}</td>
+                    <td>{item.title}</td>
+                    <td>{item.solvedAt}</td>
+                  </Link>
                 </tr>
               ))}
             </tbody>

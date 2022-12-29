@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Carousel from "~/components/Carousel";
+import { problemList } from "../qlists/problemList";
+
+// problem.title
+// "국제대회 참석하는 50대 여성을 위한 한국 상징하는 한복디자인을 하려 한다. 전통문화 내포하면서도 격식있는 느낌이 연출되도록 연상 형용사를 제시하고 배색하라."
+// .replace(/\./g, ".\n")
+//  `국제대회 참석하는 50대 여성을 위한 한국 상징하는 한복디자인을 하려 한다.
+// 전통문화 내포하면서도 격식있는 느낌이 연출되도록 연상 형용사를 제시하고 배색하라.`
+// .split("\n")
+//  [
+// "국제대회 참석하는 50대 여성을 위한 한국 상징하는 한복디자인을 하려 한다.",
+// "전통문화 내포하면서도 격식있는 느낌이 연출되도록 연상 형용사를 제시하고 배색하라."
+// ]
+// .map((line) => (<p>{line}</p>))
+//  [
+// <p>국제대회 참석하는 50대 여성을 위한 한국 상징하는 한복디자인을 하려 한다.</p>,
+// <p>전통문화 내포하면서도 격식있는 느낌이 연출되도록 연상 형용사를 제시하고 배색하라.</p>
+// ]
+
+function shuffle<T>(array: T[]) {
+  const copied = [...array];
+  copied.sort(() => Math.random() - 0.5); //부수 효과
+  return copied;
+}
 
 function Root() {
+  const [shuffled, setShuffled] = useState([] as typeof problemList);
+  useEffect(() => {
+    setShuffled(shuffle(problemList));
+  }, []);
   return (
     <>
       <Carousel>
-        <h3 className="text-3xl">대충 광고</h3>
-        <h3 className="text-3xl">문제풀이</h3>
-        <h3 className="text-3xl">역량배지</h3>
-        <h3 className="text-3xl">컬러4회차</h3>
+        {shuffled.map((problem) => (
+          <Link to={"/quizs/" + problem.id}>
+            <h3 className="text-3xl">{problem.title}</h3>
+          </Link>
+        ))}
       </Carousel>
       <main>
         <article className="flex flex-col justify-center">
@@ -64,7 +93,7 @@ function Root() {
                 <tr className="text-center">
                   <th>순위</th>
                   <th>문제 제목</th>
-                  <th>조회수</th>
+                  <th>저장수</th>
                 </tr>
               </thead>
               <tbody>

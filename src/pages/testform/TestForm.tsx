@@ -1,12 +1,10 @@
 import React, { useId } from "react";
 import Pallete from "./Pallete";
 import "./TestForm.css";
-import QuizList from "~/pages/qlists/quizList.json";
-import { saveColors } from "~/api"; // absolute 절대
+import { problemList } from "~/pages/qlists/problemList";
+// import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
 import Button from "~/components/Button";
-
-// import { saveColors } from "../../api"; // relative 상대
 
 // 8월 16일 2번
 // https://www.radix-ui.com/docs/primitives/components/tabs#examples
@@ -17,12 +15,21 @@ function TestForm() {
   const params = useParams(); // url에 있는 파라미터(path variable, dynamic routes)를 가져옴!
   // ?? 널 병합 연산자. 왼쪽이 null이나 undefined면 오른쪽의 값을 fallback으로 써라
   const quizId = parseInt((params["quizId"] as string | undefined) ?? "1"); // ex 1
-  const quiz = QuizList.quiz[quizId - 1]; // index는 0부터 셈으로...
+  const quiz = problemList.find((problem) => problem.id === quizId);
+
+  if (quiz === undefined) {
+    // 타입 가드
+    return (
+      <Link to="/quizs">
+        잘못된 문제 id : {quizId} 입니다! 문제 목록으로 돌아가려면 클릭하세요.
+      </Link>
+    );
+  }
 
   return (
     <article className="test-form">
       {/* 0825 합동코칭 - 연결하기위해 form으로 감싸고 submit  */}
-      <Link to={`/quiz/${Math.min(Math.floor(Math.random() * 26 + 1), 26)}`}>
+      <Link to={`/quizs/${Math.min(Math.floor(Math.random() * 26 + 1), 26)}`}>
         무작위 문제 보기
       </Link>
       <form
@@ -69,9 +76,9 @@ function TestForm() {
       >
         <div className="quiz-paragraph">
           <a className="category" href="">
-            {quiz.class}
+            {quiz.year} {quiz.round} 기출
           </a>
-          <h1 className="text-2xl mb-2">Q. {quiz.quizContent}</h1>
+          <h1 className="text-2xl mb-2">Q. {quiz.title}</h1>
           <h2 id="condition" className="text-lg">
             {quiz.condition}
           </h2>

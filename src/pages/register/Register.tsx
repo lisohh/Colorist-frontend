@@ -11,10 +11,13 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<UserInfoT>({
     defaultValues: {
       email: "",
       password: "",
+      pic: "",
+      nickname: "",
+      bio: "",
     },
   });
 
@@ -55,6 +58,30 @@ function Register() {
         label="비밀번호"
         {...register("password", {
           required: "비밀번호를 입력해주세요!",
+        })}
+        errors={errors}
+      />
+      <Input
+        type="text"
+        label="프로필 사진 url"
+        {...register("pic", {
+          required: "프로필 사진의 url을 입력해주세요!",
+        })}
+        errors={errors}
+      />
+      <Input
+        type="text"
+        label="별명"
+        {...register("nickname", {
+          required: "별명을 입력해주세요!",
+        })}
+        errors={errors}
+      />
+      <Input
+        type="text"
+        label="소개"
+        {...register("bio", {
+          required: "소개를 입력해주세요!",
         })}
         errors={errors}
       />

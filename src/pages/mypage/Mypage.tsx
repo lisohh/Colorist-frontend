@@ -2,6 +2,7 @@ import React from "react";
 import { problemList } from "../qlists/problemList";
 import SelectGroup from "../../components/SelectGroup";
 import Pagination from "../../components/Pagination";
+import { Link } from "react-router-dom";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -18,9 +19,9 @@ function Mypage() {
             </a>
           </div>
           <div className="flex flex-col gap-4">
-            <a href="#" className="btn btn-secondary">
+            <Link to="/mypage/edit" className="btn btn-secondary">
               프로필 편집
-            </a>
+            </Link>
             <div>
               <h3 className="text-lg">닉네임</h3>
               자몽
@@ -51,14 +52,16 @@ function Mypage() {
             <tbody>
               {problemList.map((item) => (
                 <tr>
-                  <td>
-                    <input type="checkbox" className="checkbox checkbox-" />
-                  </td>
-                  <td>{item.year}</td>
-                  <td>{item.round}</td>
-                  <td>{item.type}</td>
-                  <td>{item.title}</td>
-                  <td>{item.solvedAt}</td>
+                  <Link to={"/quizs/" + item.id} className="contents">
+                    <td>
+                      <input type="checkbox" className="checkbox checkbox-" />
+                    </td>
+                    <td>{item.year}</td>
+                    <td>{item.round}</td>
+                    <td>{item.type}</td>
+                    <td>{item.title}</td>
+                    <td>{item.solvedAt}</td>
+                  </Link>
                 </tr>
               ))}
             </tbody>

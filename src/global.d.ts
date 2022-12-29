@@ -11,4 +11,7 @@ type MyColors = {
 type UserInfoT = {
   email: string;
   password: string;
+  pic: string; // url
+  nickname: string;
+  bio: string;
 };

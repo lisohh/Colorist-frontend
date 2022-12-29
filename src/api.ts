@@ -23,7 +23,7 @@ export function join(data: UserInfoT) {
 }
 
 // login
-export function login(data: UserInfoT) {
+export function login(data: Pick<UserInfoT, "email" | "password">) {
   return post("/auth/login", data);
 }
 

@@ -32,19 +32,35 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
           style={{ background: colorShuffled[i] }}
           className="carousel-item relative w-full bg-primary flex flex-col justify-center align-middle text-center"
         >
-          <a
-            href={"#slide" + (i === start ? end : i - 1)}
+          <button
+            onClick={() => {
+              const prevItem = document.getElementById(
+                "slide" + (i === start ? end : i - 1)
+              );
+              prevItem?.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+              });
+            }}
             className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 left-5"
           >
             ❮
-          </a>
+          </button>
           <div className="px-20">{child}</div>
-          <a
-            href={"#slide" + (i === end ? 0 : i + 1)}
+          <button
+            onClick={() => {
+              const nextItem = document.getElementById(
+                "slide" + (i === end ? 0 : i + 1)
+              );
+              nextItem?.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+              });
+            }}
             className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 right-5"
           >
             ❯
-          </a>
+          </button>
         </div>
       ))}
     </header>

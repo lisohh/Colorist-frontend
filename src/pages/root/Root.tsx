@@ -30,7 +30,14 @@ function Root() {
       <Carousel>
         {shuffled.map((problem) => (
           <Link to={"/quizs/" + problem.id}>
-            <h3 className="text-3xl">{problem.title}</h3>
+            <h3 className="text-3xl">
+              {problem.title
+                .replace(/\./g, ".\n")
+                .split("\n")
+                .map((line) => (
+                  <p>{line}</p>
+                ))}
+            </h3>
           </Link>
         ))}
       </Carousel>

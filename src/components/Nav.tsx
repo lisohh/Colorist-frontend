@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { DrawerOpenButton } from "./Drawer";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const YELLOW_HEX = "#f5cd2f";
-const logoFont = "'DM Sans', sans-serif";
 
 function Nav() {
   return (
@@ -14,7 +14,7 @@ function Nav() {
         </li>
         <li>
           <Link to="/">
-            <strong style={{ font: `${logoFont}` }}>Color.list</strong>
+            <strong>Color.list</strong>
           </Link>
         </li>
         <li>

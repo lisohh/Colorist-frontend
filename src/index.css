@@ -16,6 +16,7 @@ body {
   font-family: "MinSans-Medium";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
 }
 
 code {

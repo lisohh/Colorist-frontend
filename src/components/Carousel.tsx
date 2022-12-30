@@ -38,7 +38,7 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
           >
             ❮
           </a>
-          {child}
+          <div className="px-20">{child}</div>
           <a
             href={"#slide" + (i === end ? 0 : i + 1)}
             className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 right-5"

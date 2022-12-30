@@ -41,8 +41,10 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
                 behavior: "smooth",
                 block: "end",
               });
+              prevItem?.focus();
             }}
             className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 left-5"
+            aria-label="이전 캐로셀 보기"
           >
             ❮
           </button>
@@ -56,8 +58,10 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
                 behavior: "smooth",
                 block: "end",
               });
+              nextItem?.focus();
             }}
             className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 right-5"
+            aria-label="다음 캐로셀 보기"
           >
             ❯
           </button>

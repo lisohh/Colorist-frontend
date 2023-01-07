@@ -1,7 +1,8 @@
 import React from "react";
 import { problemList } from "../qlists/problemList";
-import SelectGroup from "../../components/SelectGroup";
-import Pagination from "../../components/Pagination";
+import SelectGroup from "~/components/SelectGroup";
+import Pagination from "~/components/Pagination";
+import Button from "~/components/Button";
 import { Link } from "react-router-dom";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
@@ -19,9 +20,9 @@ function Mypage() {
             </a>
           </div>
           <div className="flex flex-col gap-4">
-            <Link to="/mypage/edit" className="btn btn-secondary">
+            <Button as={Link} to="/mypage/edit">
               프로필 편집
-            </Link>
+            </Button>
             <div>
               <h3 className="text-lg">닉네임</h3>
               자몽
@@ -68,9 +69,7 @@ function Mypage() {
           </table>
         </div>
         <footer className="flex flex-row justify-between">
-          <button type="button" className="btn btn-secondary">
-            출력
-          </button>
+          <Button>출력</Button>
           <Pagination />
           <div className="w-20 opacity-0">숨김</div>
         </footer>

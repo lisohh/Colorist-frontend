@@ -4,6 +4,7 @@ import Pagination from "../../components/Pagination";
 import { problemList } from "./problemList";
 import SelectGroup from "../../components/SelectGroup";
 import { Link } from "react-router-dom";
+import Button from "~/components/Button";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -118,9 +119,7 @@ function Mypage() {
           </div>
         </section>
         <footer className="flex flex-row justify-between">
-          <button type="button" className="w-20 bg-yellow-300">
-            출력
-          </button>
+          <Button>출력</Button>
           <Pagination />
           <div className="w-20 opacity-0">숨김</div>
         </footer>

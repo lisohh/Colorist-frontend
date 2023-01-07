@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { repeat, shuffle } from "~/utils/array";
+import Button from "./Button";
 
 const colorGradation: string[] = [
   "linear-gradient(45deg, #00C9FF 0%, #92FE9D 100%)",
@@ -32,7 +33,7 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
           style={{ background: colorShuffled[i] }}
           className="carousel-item relative w-full bg-primary flex flex-col justify-center align-middle text-center"
         >
-          <button
+          <Button
             onClick={() => {
               const prevItem = document.getElementById(
                 "slide" + (i === start ? end : i - 1)
@@ -43,13 +44,15 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
               });
               prevItem?.focus();
             }}
-            className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 left-5"
+            variant="ghost"
+            shape="circle"
+            className="absolute top-1/2 transform -translate-y-1/2 left-5"
             aria-label="이전 캐로셀 보기"
           >
             ❮
-          </button>
+          </Button>
           <div className="px-20">{child}</div>
-          <button
+          <Button
             onClick={() => {
               const nextItem = document.getElementById(
                 "slide" + (i === end ? 0 : i + 1)
@@ -60,11 +63,13 @@ function Carousel({ children }: { children: React.ReactElement[] }) {
               });
               nextItem?.focus();
             }}
-            className="btn btn-circle absolute top-1/2 transform -translate-y-1/2 right-5"
+            variant="ghost"
+            shape="circle"
+            className="absolute top-1/2 transform -translate-y-1/2 right-5"
             aria-label="다음 캐로셀 보기"
           >
             ❯
-          </button>
+          </Button>
         </div>
       ))}
     </header>

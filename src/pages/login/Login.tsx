@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "~/components/Button";
+import Input from "~/components/Input";
 import VerticalForm from "~/components/VerticalForm";
 import * as api from "../../api";
 
@@ -44,31 +45,22 @@ function Login() {
         </Button>
       }
     >
-      <>
-        <label className="flex flex-col gap-2">
-          <span className="text-xl">이메일</span>
-          <input
-            type="email"
-            className="input input-bordered"
-            {...register("email", {
-              required: "이메일을 입력해주세요!",
-            })}
-          />
-        </label>
-        {errors.email && <li role="alert">{errors.email.message}</li>}
-
-        <label className="flex flex-col gap-2">
-          <span className="text-xl">비밀번호</span>
-          <input
-            type="password"
-            className="input input-bordered"
-            {...register("password", {
-              required: "비밀번호를 입력해주세요!",
-            })}
-          />
-        </label>
-        {errors.password && <li role="alert">{errors.password.message}</li>}
-      </>
+      <Input
+        type="email"
+        label="이메일"
+        {...register("email", {
+          required: "이메일을 입력해주세요!",
+        })}
+        errors={errors}
+      />
+      <Input
+        type="password"
+        label="비밀번호"
+        {...register("password", {
+          required: "비밀번호를 입력해주세요!",
+        })}
+        errors={errors}
+      />
     </VerticalForm>
   );
 }

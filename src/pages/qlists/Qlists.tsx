@@ -5,6 +5,7 @@ import { problemList } from "./problemList";
 import SelectGroup from "../../components/SelectGroup";
 import { Link } from "react-router-dom";
 import Button from "~/components/Button";
+import Footer from "~/components/Footer";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -12,12 +13,14 @@ function Mypage() {
   return (
     <div className="mypage">
       <article className="Qpage">
-        <h2 className="title text-center">문제 목록</h2>
+        <h2 className="title text-center text-3xl my-12">문제 목록</h2>
         <section className="view-arrange"></section>
         <div className="most-viewed-list">
-          <h3 className="mostViewed-Q-list-heading ml-4">가장 많이 본 문제</h3>
+          <h3 className="mostViewed-Q-list-heading ml-4 mb-4 text-xl font-semibold">
+            가장 많이 본 문제
+          </h3>
           <table
-            className="table table-zebra w-full"
+            className="table table-zebra w-full my-4"
             aria-labelledby="Mostviewd-list-heading"
           >
             <thead>
@@ -50,11 +53,11 @@ function Mypage() {
         </div>
         <section className="save-arrange"></section>
         <div className="most-solved-list">
-          <h1 className="mostSolved-Q-list-heading gap-4 ml-4">
+          <h1 className="mostSolved-Q-list-heading gap-4 ml-4 mb-4 text-xl font-semibold">
             가장 많이 푼 문제
           </h1>
           <table
-            className="table table-zebra w-full"
+            className="table table-zebra w-full my-4"
             aria-labelledby="Mostsolved-list-heading"
           >
             <thead>
@@ -85,10 +88,12 @@ function Mypage() {
         </div>
         <section className="all">
           <div className="question-list">
-            <h3 className="all-Q-list-heading ml-4">모든 문제</h3>
+            <h3 className="all-Q-list-heading ml-4 mb-4 text-xl font-semibold">
+              모든 문제
+            </h3>
             <SelectGroup />
             <table
-              className="table table-zebra w-full"
+              className="table table-zebra w-full mb-8"
               aria-labelledby="solved-list-heading"
             >
               <thead>
@@ -124,6 +129,7 @@ function Mypage() {
           <div className="w-20 opacity-0">숨김</div>
         </footer>
       </article>
+      <Footer />
     </div>
   );
 }

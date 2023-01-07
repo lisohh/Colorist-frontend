@@ -4,6 +4,7 @@ import SelectGroup from "~/components/SelectGroup";
 import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
 import { Link } from "react-router-dom";
+import Footer from "~/components/Footer";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
@@ -34,7 +35,7 @@ function Mypage() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <h3 className="text-3xl">푼 문제 목록</h3>
+          <h3 className="text-3xl my-4">푼 문제 목록</h3>
           <SelectGroup />
           <table
             className="table table-zebra w-full"
@@ -68,12 +69,13 @@ function Mypage() {
             </tbody>
           </table>
         </div>
-        <footer className="flex flex-row justify-between">
+        <footer className="flex flex-row justify-between my-4">
           <Button>출력</Button>
           <Pagination />
           <div className="w-20 opacity-0">숨김</div>
         </footer>
       </article>
+      <Footer />
     </div>
   );
 }

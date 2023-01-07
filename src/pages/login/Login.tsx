@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "~/components/Button";
+import Footer from "~/components/Footer";
 import Input from "~/components/Input";
 import VerticalForm from "~/components/VerticalForm";
 import * as api from "../../api";
@@ -26,42 +27,45 @@ function Login() {
   });
 
   return (
-    <VerticalForm
-      title="로그인"
-      submitLabel="로그인하기"
-      onSubmit={handleSubmit(async (data) => {
-        const response = await api.login(data);
+    <>
+      <VerticalForm
+        title="로그인"
+        submitLabel="로그인하기"
+        onSubmit={handleSubmit(async (data) => {
+          const response = await api.login(data);
 
-        if (response.ok) {
-          const result = await response.json(); // body로 온 json을 파싱함!
+          if (response.ok) {
+            const result = await response.json(); // body로 온 json을 파싱함!
 
-          alert(JSON.stringify(result));
-          navigate("/");
+            alert(JSON.stringify(result));
+            navigate("/");
+          }
+        })}
+        after={
+          <Button as={Link} to="/register" className="text-center">
+            회원가입으로 이동
+          </Button>
         }
-      })}
-      after={
-        <Button as={Link} to="/register" className="text-center">
-          회원가입으로 이동
-        </Button>
-      }
-    >
-      <Input
-        type="email"
-        label="이메일"
-        {...register("email", {
-          required: "이메일을 입력해주세요!",
-        })}
-        errors={errors}
-      />
-      <Input
-        type="password"
-        label="비밀번호"
-        {...register("password", {
-          required: "비밀번호를 입력해주세요!",
-        })}
-        errors={errors}
-      />
-    </VerticalForm>
+      >
+        <Input
+          type="email"
+          label="이메일"
+          {...register("email", {
+            required: "이메일을 입력해주세요!",
+          })}
+          errors={errors}
+        />
+        <Input
+          type="password"
+          label="비밀번호"
+          {...register("password", {
+            required: "비밀번호를 입력해주세요!",
+          })}
+          errors={errors}
+        />
+      </VerticalForm>
+      <Footer />
+    </>
   );
 }
 

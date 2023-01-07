@@ -23,11 +23,11 @@ function VerticalForm({
   return (
     <article className="login-form max-w-screen-sm mx-auto p-4">
       <form className="flex flex-col gap-3" onSubmit={onSubmit}>
-        <h2 className="text-4xl">{title}</h2>
+        <h2 className="text-3xl mx-auto">{title}</h2>
 
         {children}
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full  my-2">
           {submitLabel}
         </Button>
 

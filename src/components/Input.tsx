@@ -106,11 +106,11 @@ const Input = forwardRef(function <T>(
 
   return (
     <>
-      <label className="flex flex-col gap-2">
+      <label className="flex flex-col gap-2 mb-4">
         <span className="text-xl">{label}</span>
         <input
           ref={ref}
-          className="input input-bordered"
+          className="input bg-slate-200"
           name={name}
           {...props}
         />

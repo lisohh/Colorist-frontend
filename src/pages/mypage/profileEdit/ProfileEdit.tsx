@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import Button from "~/components/Button";
 import Input from "~/components/Input";
 import VerticalForm from "~/components/VerticalForm";
 
@@ -45,21 +43,25 @@ function ProfileEdit() {
         alert(JSON.stringify(data));
       })}
     >
-      <>
-        <Input
-          type="password"
-          label="비밀번호"
-          {...register("password", {
-            required: "비밀번호를 입력해주세요!",
-          })}
-          errors={errors}
-        />
-        {pic && <img src={pic} className="w-48" />}
+      <div className="flex flex-col justify-center">
+        {pic && (
+          <div className="w-80 h-80 mx-auto rounded-full overflow-hidden my-8">
+            <img src={pic} className="object-cover w-full h-full" />
+          </div>
+        )}
         <Input
           type="text"
           label="프로필 사진 url"
           {...register("pic", {
             required: "프로필 사진의 url을 입력해주세요!",
+          })}
+          errors={errors}
+        />
+        <Input
+          type="password"
+          label="비밀번호"
+          {...register("password", {
+            required: "비밀번호를 입력해주세요!",
           })}
           errors={errors}
         />
@@ -72,7 +74,7 @@ function ProfileEdit() {
           errors={errors}
         />
         <Input type="text" label="소개" {...register("bio")} errors={errors} />
-      </>
+      </div>
     </VerticalForm>
   );
 }

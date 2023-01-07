@@ -2,7 +2,7 @@ import React from "react";
 
 function SelectGroup() {
   return (
-    <div className="select-group mb-1">
+    <div className="select-group mb-4">
       <select className="select w-32 mr-4 pop-box-shadow text-center text-base">
         <option disabled selected>
           2022

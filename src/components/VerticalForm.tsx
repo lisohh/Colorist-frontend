@@ -21,7 +21,7 @@ function VerticalForm({
   after = null,
 }: VerticalFormProps) {
   return (
-    <article className="login-form max-w-screen-sm mx-auto p-4">
+    <article className="login-form max-w-screen-sm mx-auto p-4 my-0">
       <form className="flex flex-col gap-3" onSubmit={onSubmit}>
         <h2 className="text-3xl mx-auto">{title}</h2>
 

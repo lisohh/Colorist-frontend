@@ -10,73 +10,70 @@ import Footer from "~/components/Footer";
 
 function Mypage() {
   return (
-    <div className="mypage">
-      <article className="flex flex-col gap-2">
-        <div className="w-full flex flex-col sm:flex-row pt-16 pb-16 gap-2">
-          <div className="h-full w-full sm:w-1/2 lg:w-1/3 flex justify-center align-middle">
-            <a href="#" className="avatar">
-              <div className="w-48 h-48 rounded-full">
-                <img src="/blue_bubble.jpg" />
-              </div>
-            </a>
+    <article className="flex flex-col gap-2">
+      <div className="w-full flex flex-col sm:flex-row pt-16 pb-16 gap-2">
+        <div className="h-full w-full sm:w-1/2 lg:w-1/3 flex justify-center align-middle">
+          <a href="#" className="avatar">
+            <div className="w-48 h-48 rounded-full">
+              <img src="/blue_bubble.jpg" />
+            </div>
+          </a>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Button as={Link} to="/mypage/edit">
+            프로필 편집
+          </Button>
+          <div>
+            <h3 className="text-lg">닉네임</h3>
+            자몽
           </div>
-          <div className="flex flex-col gap-4">
-            <Button as={Link} to="/mypage/edit">
-              프로필 편집
-            </Button>
-            <div>
-              <h3 className="text-lg">닉네임</h3>
-              자몽
-            </div>
-            <div>
-              <h3 className="text-lg">자기소개</h3>
-              안녕하세요. 저는 누구누구입니다.
-            </div>
+          <div>
+            <h3 className="text-lg">자기소개</h3>
+            안녕하세요. 저는 누구누구입니다.
           </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <h3 className="text-3xl my-4">푼 문제 목록</h3>
-          <SelectGroup />
-          <table
-            className="table table-zebra w-full"
-            aria-labelledby="solved-list-heading"
-          >
-            <thead>
+      </div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-3xl my-4">푼 문제 목록</h3>
+        <SelectGroup />
+        <table
+          className="table table-zebra w-full"
+          aria-labelledby="solved-list-heading"
+        >
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th>연도</th>
+              <th>회차</th>
+              <th>유형</th>
+              <th>문제 이름</th>
+              <th>푼 날짜</th>
+            </tr>
+          </thead>
+          <tbody>
+            {problemList.map((item) => (
               <tr>
-                <th>선택</th>
-                <th>연도</th>
-                <th>회차</th>
-                <th>유형</th>
-                <th>문제 이름</th>
-                <th>푼 날짜</th>
+                <Link to={"/quizs/" + item.id} className="contents">
+                  <td>
+                    <input type="checkbox" className="checkbox checkbox-" />
+                  </td>
+                  <td>{item.year}</td>
+                  <td>{item.round}</td>
+                  <td>{item.type}</td>
+                  <td>{item.title}</td>
+                  <td>{item.solvedAt}</td>
+                </Link>
               </tr>
-            </thead>
-            <tbody>
-              {problemList.map((item) => (
-                <tr>
-                  <Link to={"/quizs/" + item.id} className="contents">
-                    <td>
-                      <input type="checkbox" className="checkbox checkbox-" />
-                    </td>
-                    <td>{item.year}</td>
-                    <td>{item.round}</td>
-                    <td>{item.type}</td>
-                    <td>{item.title}</td>
-                    <td>{item.solvedAt}</td>
-                  </Link>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <footer className="flex flex-row justify-between my-4">
-          <Button>출력</Button>
-          <Pagination />
-          <div className="w-20 opacity-0">숨김</div>
-        </footer>
-      </article>
-      <Footer />
-    </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <footer className="flex flex-row justify-between my-4">
+        <Button>출력</Button>
+        <Pagination />
+        <div className="w-20 opacity-0">숨김</div>
+      </footer>
+    </article>
   );
 }
 

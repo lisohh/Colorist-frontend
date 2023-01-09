@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="footer footer-center content-end mt-28 p-10 bg-base-200 text-base-content rounded">
+    <footer className="footer footer-center content-end p-10 bg-base-200 text-base-content rounded">
       <div>
         <div className="grid grid-flow-col gap-4">
           <a>lisohh</a>

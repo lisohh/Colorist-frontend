@@ -19,6 +19,12 @@ body {
   word-break: keep-all;
 }
 
+main {
+  --nav-height: 2.5rem;
+  --footer-height: 10rem;
+  min-height: calc(100vh - var(--nav-height) - 0.8px - var(--footer-height));
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -42,97 +42,94 @@ function Root() {
           </Link>
         ))}
       </Carousel>
-      <main>
-        <article className="flex flex-col justify-center">
-          <div className="w-full h-32 text-center flex flex-col justify-center align-middle">
-            <h3 className="text-4xl">조회수가 많은 문제 TOP5</h3>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="table table-purple-zebra w-full">
-              <thead>
-                <tr className="text-center">
-                  <th>순위</th>
-                  <th>문제 제목</th>
-                  <th>조회수</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="text-center">
-                  <th>1</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>1280</td>
-                </tr>
-                <tr className="text-center">
-                  <th>2</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>256</td>
-                </tr>
-                <tr className="text-center">
-                  <th>3</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>64</td>
-                </tr>
-                <tr className="text-center">
-                  <th>4</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>50</td>
-                </tr>
-                <tr className="text-center">
-                  <th>5</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>16</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-        <article className="flex flex-col justify-center">
-          <div className="w-full h-32 text-center flex flex-col justify-center align-middle">
-            <h3 className="text-4xl">저장수가 많은 문제 TOP5</h3>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="table table-yellow-zebra w-full">
-              <thead>
-                <tr className="text-center">
-                  <th>순위</th>
-                  <th>문제 제목</th>
-                  <th>저장수</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="text-center">
-                  <th>1</th>
-                  <td>
-                    <a>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</a>
-                  </td>
-                  <td>1280</td>
-                </tr>
-                <tr className="text-center">
-                  <th>2</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>256</td>
-                </tr>
-                <tr className="text-center">
-                  <th>3</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>64</td>
-                </tr>
-                <tr className="text-center">
-                  <th>4</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>50</td>
-                </tr>
-                <tr className="text-center">
-                  <th>5</th>
-                  <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
-                  <td>16</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-      </main>
-      <Footer />
+      <article className="flex flex-col justify-center">
+        <div className="w-full h-32 text-center flex flex-col justify-center align-middle">
+          <h3 className="text-4xl">조회수가 많은 문제 TOP5</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="table table-purple-zebra w-full">
+            <thead>
+              <tr className="text-center">
+                <th>순위</th>
+                <th>문제 제목</th>
+                <th>조회수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-center">
+                <th>1</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>1280</td>
+              </tr>
+              <tr className="text-center">
+                <th>2</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>256</td>
+              </tr>
+              <tr className="text-center">
+                <th>3</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>64</td>
+              </tr>
+              <tr className="text-center">
+                <th>4</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>50</td>
+              </tr>
+              <tr className="text-center">
+                <th>5</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>16</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+      <article className="flex flex-col justify-center">
+        <div className="w-full h-32 text-center flex flex-col justify-center align-middle">
+          <h3 className="text-4xl">저장수가 많은 문제 TOP5</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="table table-yellow-zebra w-full">
+            <thead>
+              <tr className="text-center">
+                <th>순위</th>
+                <th>문제 제목</th>
+                <th>저장수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-center">
+                <th>1</th>
+                <td>
+                  <a>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</a>
+                </td>
+                <td>1280</td>
+              </tr>
+              <tr className="text-center">
+                <th>2</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>256</td>
+              </tr>
+              <tr className="text-center">
+                <th>3</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>64</td>
+              </tr>
+              <tr className="text-center">
+                <th>4</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>50</td>
+              </tr>
+              <tr className="text-center">
+                <th>5</th>
+                <td>2022년도 1회차 1-2. 문제 제목 얼레벌레 블라블라</td>
+                <td>16</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
     </>
   );
 }

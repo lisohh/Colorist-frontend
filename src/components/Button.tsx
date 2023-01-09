@@ -20,7 +20,7 @@ function Button<C extends React.ElementType>({
   ...props
 }: ButtonProps<C>) {
   const Component = as ?? "button";
-  const variantClass = variant === "ghost" ? "btn-ghost" : "btn-secondary";
+  const variantClass = variant === "ghost" ? "btn-ghost" : "btn-primary";
   const shapeClass = shape === "circle" ? "btn-circle" : "";
 
   return (

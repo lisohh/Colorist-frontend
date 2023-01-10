@@ -72,7 +72,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
             deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
           />
         ) : (
-          <ul className="w-fit p-4">
+          <ul className="w-fit">
             <li>
               <Input
                 type="color"

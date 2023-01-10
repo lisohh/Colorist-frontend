@@ -30,9 +30,7 @@ function TestForm() {
   return (
     <article className="test-form">
       {/* 0825 합동코칭 - 연결하기위해 form으로 감싸고 submit  */}
-      <Link to={`/quizs/${Math.min(Math.floor(Math.random() * 26 + 1), 26)}`}>
-        무작위 문제 보기
-      </Link>
+
       <form
         className="flex flex-col gap-8"
         onSubmit={(event) => {
@@ -75,11 +73,22 @@ function TestForm() {
           }
         }}
       >
+        <div>
+          <Link
+            to={`/quizs/${Math.min(
+              Math.floor(Math.random() * problemList.length + 1),
+              problemList.length
+            )}`}
+            className="btn btn-primary"
+          >
+            무작위 문제 보기
+          </Link>
+        </div>
         <div className="quiz-paragraph">
-          <a className="category" href="">
+          <span>
             {quiz.year} {quiz.round} 기출
-          </a>
-          <h1 className="text-2xl mb-2">Q. {quiz.title}</h1>
+          </span>
+          <h1 className="text-2xl my-2">Q. {quiz.title}</h1>
           <h2 id="condition" className="text-lg">
             {quiz.condition}
           </h2>

@@ -5,6 +5,7 @@ import { problemList } from "~/pages/qlists/problemList";
 // import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
 import Button from "~/components/Button";
+import Input from "~/components/Input";
 
 // 8월 16일 2번
 // https://www.radix-ui.com/docs/primitives/components/tabs#examples
@@ -33,7 +34,7 @@ function TestForm() {
         무작위 문제 보기
       </Link>
       <form
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-8"
         onSubmit={(event) => {
           event.preventDefault();
           const formData = new FormData(event.target as HTMLFormElement);
@@ -84,36 +85,37 @@ function TestForm() {
           </h2>
         </div>
 
-        <Pallete />
+        <Pallete isDouble={!quiz.type.endsWith("3")} />
         {/* 8번 input은 text 줄바꿈이 안되므로 textarea를 사용해 서술칸을 만든다. */}
         {/* <input type="text" /> */}
-        <p id="allColor">주보강 기입</p>
-        <ColorSelectionInput label="주조색" name="ju" />
-        <ColorSelectionInput label="보조색" name="bo" />
-        <ColorSelectionInput label="강조색" name="gang" />
-
-        <label className="color-label" htmlFor="explanation" id="explanation">
-          배색 설명
-        </label>
-        <textarea
-          id="explanation"
-          className="explanation p-3 min-h-32"
-          name="answer"
-          placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-        />
-        <p id="allColor">주보강 기입</p>
-        <ColorSelectionInput label="주조색" name="ju" />
-        <ColorSelectionInput label="보조색" name="bo" />
-        <ColorSelectionInput label="강조색" name="gang" />
-        <label className="color-label" htmlFor="explanation" id="explanation-2">
-          배색 설명
-        </label>
-        <textarea
-          id="explanation-2"
-          className="explanation p-3 min-h-32"
-          name="answer"
-          placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
-        />
+        <section className="flex flex-col">
+          <h3 className="text-2xl mb-4">주보강 기입</h3>
+          <ColorSelectionInput label="주조색" name="ju" />
+          <ColorSelectionInput label="보조색" name="bo" />
+          <ColorSelectionInput label="강조색" name="gang" />
+          <label className="flex flex-col gap-2">
+            <span className="text-xl">배색 설명</span>
+            <textarea
+              className="textarea bg-slate-100 min-h-32"
+              name="answer"
+              placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
+            />
+          </label>
+        </section>
+        <section className="flex flex-col">
+          <h3 className="text-2xl mb-4">주보강 기입</h3>
+          <ColorSelectionInput label="주조색" name="ju" />
+          <ColorSelectionInput label="보조색" name="bo" />
+          <ColorSelectionInput label="강조색" name="gang" />
+          <label className="flex flex-col gap-2">
+            <span className="text-xl">배색 설명</span>
+            <textarea
+              className="textarea bg-slate-100 min-h-32"
+              name="answer"
+              placeholder={"컨셉:\n주조색:\n보조색:\n강조색:\n배색 기법:"}
+            />
+          </label>
+        </section>
         <Button type="submit">저장할래요</Button>
       </form>
     </article>
@@ -123,21 +125,14 @@ function TestForm() {
 export default TestForm;
 
 function ColorSelectionInput({ label, name }: { label: string; name: string }) {
-  const id = useId();
-  const placeholder = `${label}:`;
-
   return (
-    <>
-      <label className="color-label" htmlFor={id}>
-        {label}
-      </label>
-      <input
-        id={id}
-        className="p-3 color-selection"
-        type="text"
-        placeholder={placeholder}
-        name={name}
-      />
-    </>
+    <Input
+      className="input w-full bg-slate-100"
+      type="text"
+      placeholder={`${label}:`}
+      name={name}
+      label={label}
+      errors={{}}
+    />
   );
 }

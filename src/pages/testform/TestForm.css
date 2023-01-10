@@ -14,18 +14,6 @@
   flex-wrap: wrap;
 }
 
-div#pallete-box {
-  width: fit-content;
-  border-radius: 0 0 1rem 1rem;
-  background-color: #e6e6e6;
-}
-
-div#pallete {
-  padding: 1rem 0;
-  margin: 1.5rem 0;
-  justify-content: center;
-}
-
 /* 팔레트 색깔 버튼 css */
 .roundButton {
   padding: 0.2rem;

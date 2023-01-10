@@ -51,6 +51,7 @@ function ProfileEdit() {
         )}
         <Input
           type="text"
+          className="w-full"
           label="프로필 사진 url"
           {...register("pic", {
             required: "프로필 사진의 url을 입력해주세요!",
@@ -59,6 +60,7 @@ function ProfileEdit() {
         />
         <Input
           type="password"
+          className="w-full"
           label="비밀번호"
           {...register("password", {
             required: "비밀번호를 입력해주세요!",
@@ -67,13 +69,20 @@ function ProfileEdit() {
         />
         <Input
           type="text"
+          className="w-full"
           label="별명"
           {...register("nickname", {
             required: "별명을 입력해주세요!",
           })}
           errors={errors}
         />
-        <Input type="text" label="소개" {...register("bio")} errors={errors} />
+        <Input
+          type="text"
+          className="w-full"
+          label="소개"
+          {...register("bio")}
+          errors={errors}
+        />
       </div>
     </VerticalForm>
   );

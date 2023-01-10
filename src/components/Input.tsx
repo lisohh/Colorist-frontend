@@ -118,10 +118,10 @@ const Input = forwardRef(function <T>(
         <span className="text-xl">{label}</span>
         <div className="flex flex-row gap-4">
           <input
-            ref={ref}
-            className="input bg-slate-100"
-            name={name}
             {...props}
+            ref={ref}
+            name={name}
+            className={"input bg-slate-100 " + props["className"]}
             onChange={(e) => {
               const originalOnChange = props["onChange"];
               if (originalOnChange) {

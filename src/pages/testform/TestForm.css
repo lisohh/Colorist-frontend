@@ -1,7 +1,3 @@
-.test-form {
-  margin: 2rem;
-}
-
 .flex {
   display: flex;
 }
@@ -26,14 +22,12 @@
 }
 
 .selectedContainer {
-  margin-bottom: 1rem;
   border-collapse: inherit;
 }
 /* border-collapse로 양 끝 td 둥글게 맞춤 - 선택된 색 칸에 border-radius를 준 거에 맞춰진듯 */
 
 .selectedContainer td {
   width: 0.5rem;
-  height: 10rem;
   border: 1px solid lightgray;
 }
 

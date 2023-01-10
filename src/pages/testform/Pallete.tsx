@@ -61,7 +61,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
         hidden={true}
         readOnly
       />
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-center items-center gap-8">
         <ResizableBoxes
           colors={colors.slice(0, BOX_COUNT)}
           deleteSelected={deleteSelected} // 1을 받으면 1을 삭제
@@ -72,7 +72,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
             deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
           />
         ) : (
-          <ul className="w-1/2 p-4">
+          <ul className="w-fit p-4">
             <li>
               <Input
                 type="color"

@@ -87,12 +87,12 @@ function ResizableBoxes({
   }, [isChanging, oldSegments, startX]);
 
   return (
-    <table ref={tableRef} className="selectedContainer w-full">
+    <table ref={tableRef} className="selectedContainer w-1/2">
       <tbody>
-        <tr className="flex flex-row h-48">
+        <tr className="flex flex-row">
           {segments.map((segment, i) => (
             <td
-              className="flex flex-row p-0"
+              className="h-64 flex flex-row p-0"
               key={i}
               style={{
                 width: `${segment * 100}%`,
@@ -105,7 +105,7 @@ function ResizableBoxes({
               />
               {i < segments.length - 1 && (
                 <div
-                  className="bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 h-full cursor-pointer"
+                  className="h-full bg-blue-600 w-0.5 hover:w-2 transition-all p-0 m-0 cursor-pointer"
                   //시작 좌표를 기록하기 위해 모서리를 꾹 누르면
                   onMouseDown={(e) => {
                     console.log("x", e.clientX, "y", e.clientY);

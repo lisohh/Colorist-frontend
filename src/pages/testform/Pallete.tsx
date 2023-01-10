@@ -3,6 +3,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import allPallete from "./pallete.json";
 import ResizableBoxes from "./ResizableBoxes";
+import Input from "~/components/Input";
 
 // ["base", "deep"]
 // 밑의 코드 잘 이해하도록 노력하기 - 화요일에 한번 더 복습 + 타입스크립트 기본기
@@ -17,9 +18,9 @@ const palleteTypes = Object.keys(allPallete) as AllPalleteKeysT[]; // 키들로 
 const BOX_COUNT = 10;
 const WHITE_HEX = "#ffffff";
 
-function Pallete() {
+function Pallete({ isDouble = false }: { isDouble: boolean }) {
   const [colors, setColors] = React.useState<string[]>(
-    Array(BOX_COUNT * 2).fill(WHITE_HEX)
+    Array(BOX_COUNT * (isDouble ? 2 : 1)).fill(WHITE_HEX)
   ); // 문자열
 
   //6번 - addSelected 함수를 만들어
@@ -65,10 +66,42 @@ function Pallete() {
           colors={colors.slice(0, BOX_COUNT)}
           deleteSelected={deleteSelected} // 1을 받으면 1을 삭제
         />
-        <ResizableBoxes
-          colors={colors.slice(BOX_COUNT, 2 * BOX_COUNT)}
-          deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
-        />
+        {isDouble ? (
+          <ResizableBoxes
+            colors={colors.slice(BOX_COUNT, 2 * BOX_COUNT)}
+            deleteSelected={(i) => deleteSelected(i + BOX_COUNT)} // 1을 받아도 => 11을 넘겨야
+          />
+        ) : (
+          <ul className="w-1/2 p-4">
+            <li>
+              <Input
+                type="color"
+                name="main"
+                className="p-0.5 w-12 h-12 rounded"
+                label="주조색"
+                errors={{}}
+              />
+            </li>
+            <li>
+              <Input
+                type="color"
+                name="sub"
+                className="p-0.5 w-12 h-12 rounded"
+                label="보조색"
+                errors={{}}
+              />
+            </li>
+            <li>
+              <Input
+                type="color"
+                name="point"
+                className="p-0.5 w-12 h-12 rounded"
+                label="강조색"
+                errors={{}}
+              />
+            </li>
+          </ul>
+        )}
       </div>
       <div id="pallete-box">
         <Tabs.Root
@@ -77,7 +110,7 @@ function Pallete() {
         >
           <Tabs.List
             aria-label="select pallete type"
-            className="w-full tabs grid lg:grid-cols-14 sm:grid-cols-7 grid-cols-5 mb-4"
+            className="w-full tabs grid lg:grid-cols-14 sm:grid-cols-7 grid-cols-5"
           >
             {/* 팔레트의 타입마다 Tabs.Trigger를 만들어준다*/}
             {palleteTypes.map((value) => (
@@ -96,7 +129,10 @@ function Pallete() {
           {/* 팔레트의 타입마다 Tabs.Content를 만들어준다*/}
           {palleteTypes.map((value) => (
             <Tabs.Content key={value} value={value}>
-              <div id="pallete" className="flex flex-row flex-wrap">
+              <div
+                id="pallete"
+                className="flex flex-row flex-wrap bg-slate-100 p-4 justify-center"
+              >
                 {/* 4번 - pallete도 값이 여러 개이므로 map을 사용한다. */}
                 {allPallete[value].map(({ hex, colorName }, index) => (
                   <Tooltip.Root key={index}>

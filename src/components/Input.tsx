@@ -1,4 +1,4 @@
-import React, { forwardRef, type ForwardedRef } from "react";
+import React, { forwardRef, useState, type ForwardedRef } from "react";
 
 // object type
 // keyof
@@ -103,17 +103,39 @@ const Input = forwardRef(function <T>(
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const error = errors[name as keyof T];
+  const initValue =
+    props["type"] === "text"
+      ? ""
+      : props["type"] === "color"
+      ? "#000000"
+      : null;
+
+  const [value, setValue] = useState(initValue);
 
   return (
     <>
       <label className="flex flex-col gap-2 mb-4">
         <span className="text-xl">{label}</span>
-        <input
-          ref={ref}
-          className="input bg-slate-200"
-          name={name}
-          {...props}
-        />
+        <div className="flex flex-row gap-4">
+          <input
+            ref={ref}
+            className="input bg-slate-100"
+            name={name}
+            {...props}
+            onChange={(e) => {
+              const originalOnChange = props["onChange"];
+              if (originalOnChange) {
+                originalOnChange(e);
+              }
+              setValue(e.target.value);
+            }}
+          />
+          {props["type"] === "color" && (
+            <output className="flex flex-col rounded p-1 bg-slate-100 text-center w-24">
+              <div className="my-auto">{value}</div>
+            </output>
+          )}
+        </div>
       </label>
       {error && <li role="alert">{error.message}</li>}
     </>

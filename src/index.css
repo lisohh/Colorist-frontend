@@ -58,3 +58,8 @@ li[role="alert"] {
 .table.table-yellow-zebra tbody tr:nth-child(even) :where(td, th) {
   background-color: #fff4cb;
 }
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.25rem;
+}

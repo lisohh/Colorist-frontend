@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "~/components/Button";
 import Footer from "~/components/Footer";
-import Input from "~/components/Input";
+import TextInput from "~/components/TextInput";
 import VerticalForm from "~/components/VerticalForm";
 import * as api from "../../api";
 
@@ -45,7 +45,7 @@ function Register() {
         </Button>
       }
     >
-      <Input
+      <TextInput
         type="email"
         label="이메일"
         {...register("email", {
@@ -53,7 +53,7 @@ function Register() {
         })}
         errors={errors}
       />
-      <Input
+      <TextInput
         type="password"
         label="비밀번호"
         {...register("password", {
@@ -61,7 +61,7 @@ function Register() {
         })}
         errors={errors}
       />
-      <Input
+      <TextInput
         type="text"
         label="프로필 사진 url"
         {...register("pic", {
@@ -69,7 +69,7 @@ function Register() {
         })}
         errors={errors}
       />
-      <Input
+      <TextInput
         type="text"
         label="별명"
         {...register("nickname", {
@@ -77,7 +77,7 @@ function Register() {
         })}
         errors={errors}
       />
-      <Input
+      <TextInput
         type="text"
         label="소개"
         {...register("bio", {

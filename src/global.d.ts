@@ -15,3 +15,7 @@ type UserInfoT = {
   nickname: string;
   bio: string;
 };
+
+type ErrorData<T> = {
+  [key in keyof T]: { message?: string };
+};

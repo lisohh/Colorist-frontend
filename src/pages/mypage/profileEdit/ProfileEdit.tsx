@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Input from "~/components/Input";
+import TextInput from "~/components/TextInput";
 import VerticalForm from "~/components/VerticalForm";
 
 async function getOldProfile() {
@@ -49,7 +49,7 @@ function ProfileEdit() {
             <img src={pic} className="object-cover w-full h-full" />
           </div>
         )}
-        <Input
+        <TextInput
           type="text"
           className="w-full"
           label="프로필 사진 url"
@@ -58,7 +58,7 @@ function ProfileEdit() {
           })}
           errors={errors}
         />
-        <Input
+        <TextInput
           type="password"
           className="w-full"
           label="비밀번호"
@@ -67,7 +67,7 @@ function ProfileEdit() {
           })}
           errors={errors}
         />
-        <Input
+        <TextInput
           type="text"
           className="w-full"
           label="별명"
@@ -76,7 +76,7 @@ function ProfileEdit() {
           })}
           errors={errors}
         />
-        <Input
+        <TextInput
           type="text"
           className="w-full"
           label="소개"

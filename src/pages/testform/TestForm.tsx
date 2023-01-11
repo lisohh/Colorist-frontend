@@ -5,7 +5,7 @@ import { problemList } from "~/pages/qlists/problemList";
 // import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
 import Button from "~/components/Button";
-import Input from "~/components/Input";
+import TextInput from "~/components/TextInput";
 
 // 8월 16일 2번
 // https://www.radix-ui.com/docs/primitives/components/tabs#examples
@@ -135,7 +135,7 @@ export default TestForm;
 
 function ColorSelectionInput({ label, name }: { label: string; name: string }) {
   return (
-    <Input
+    <TextInput
       className="input w-full bg-slate-100"
       type="text"
       placeholder={`${label}:`}

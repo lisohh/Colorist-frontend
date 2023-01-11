@@ -3,7 +3,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import allPallete from "./pallete.json";
 import ResizableBoxes from "./ResizableBoxes";
-import Input from "~/components/Input";
+import ColorInput from "~/components/ColorInput";
 
 // ["base", "deep"]
 // 밑의 코드 잘 이해하도록 노력하기 - 화요일에 한번 더 복습 + 타입스크립트 기본기
@@ -74,8 +74,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
         ) : (
           <ul className="w-fit">
             <li>
-              <Input
-                type="color"
+              <ColorInput
                 name="main"
                 className="p-0.5 w-12 h-12 rounded"
                 label="주조색"
@@ -83,8 +82,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
               />
             </li>
             <li>
-              <Input
-                type="color"
+              <ColorInput
                 name="sub"
                 className="p-0.5 w-12 h-12 rounded"
                 label="보조색"
@@ -92,8 +90,7 @@ function Pallete({ isDouble = false }: { isDouble: boolean }) {
               />
             </li>
             <li>
-              <Input
-                type="color"
+              <ColorInput
                 name="point"
                 className="p-0.5 w-12 h-12 rounded"
                 label="강조색"

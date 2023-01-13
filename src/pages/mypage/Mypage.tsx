@@ -4,7 +4,6 @@ import SelectGroup from "~/components/SelectGroup";
 import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
 import { Link } from "react-router-dom";
-import Footer from "~/components/Footer";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 

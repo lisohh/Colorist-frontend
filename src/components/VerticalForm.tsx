@@ -1,8 +1,4 @@
 import React from "react";
-//1. bun add react-hook-form 을 터미널에 입력해서 설치
-//2. import useForm
-import { useForm, type DeepPartial } from "react-hook-form";
-import { Link } from "react-router-dom";
 import Button from "~/components/Button";
 
 type VerticalFormProps = {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "~/components/Carousel";
 import Footer from "~/components/Footer";
+import useProblemList from "~/hooks/useProblemList";
 import { shuffle } from "~/utils/array";
-import { problemList } from "../qlists/problemList";
 
 // problem.title
 // "국제대회 참석하는 50대 여성을 위한 한국 상징하는 한복디자인을 하려 한다. 전통문화 내포하면서도 격식있는 느낌이 연출되도록 연상 형용사를 제시하고 배색하라."
@@ -22,7 +22,8 @@ import { problemList } from "../qlists/problemList";
 // ]
 
 function Root() {
-  const [shuffled, setShuffled] = useState([] as typeof problemList);
+  const problemList = useProblemList();
+  const [shuffled, setShuffled] = useState([] as ProblemT[]);
   useEffect(() => {
     setShuffled(shuffle(problemList));
   }, []);

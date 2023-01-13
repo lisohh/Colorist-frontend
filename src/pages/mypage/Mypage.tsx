@@ -1,13 +1,13 @@
 import React from "react";
-import { problemList } from "../qlists/problemList";
 import SelectGroup from "~/components/SelectGroup";
 import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
 import { Link } from "react-router-dom";
-
+import useProblemList from "~/hooks/useProblemList";
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
 function Mypage() {
+  const problemList = useProblemList();
   return (
     <article className="flex flex-col gap-2">
       <div className="w-full flex flex-col sm:flex-row pt-16 pb-16 gap-2">

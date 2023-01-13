@@ -19,3 +19,13 @@ type UserInfoT = {
 type ErrorData<T> = {
   [key in keyof T]: { message?: string };
 };
+
+type ProblemT = {
+  year: string;
+  round: string;
+  type: string;
+  title: string;
+  condition: string;
+  solvedAt: string;
+  id: number;
+};

@@ -1,11 +1,11 @@
 import React, { useId } from "react";
 import Pallete from "./Pallete";
 import "./TestForm.css";
-import { problemList } from "~/pages/qlists/problemList";
 // import { saveColors } from "~/api"; // absolute 절대
 import { Link, useParams } from "react-router-dom";
 import Button from "~/components/Button";
 import TextInput from "~/components/TextInput";
+import useProblemList from "~/hooks/useProblemList";
 
 // 8월 16일 2번
 // https://www.radix-ui.com/docs/primitives/components/tabs#examples
@@ -13,6 +13,7 @@ import TextInput from "~/components/TextInput";
 // 탭의 색깔에 명도/채도가 반영되면 좋겠다
 
 function TestForm() {
+  const problemList = useProblemList();
   const params = useParams(); // url에 있는 파라미터(path variable, dynamic routes)를 가져옴!
   // ?? 널 병합 연산자. 왼쪽이 null이나 undefined면 오른쪽의 값을 fallback으로 써라
   const quizId = parseInt((params["quizId"] as string | undefined) ?? "1"); // ex 1

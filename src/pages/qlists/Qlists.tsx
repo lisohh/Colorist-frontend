@@ -1,14 +1,15 @@
 import React from "react";
 import "./Qlists.css";
 import Pagination from "../../components/Pagination";
-import { problemList } from "./problemList";
 import SelectGroup from "../../components/SelectGroup";
 import { Link } from "react-router-dom";
 import Button from "~/components/Button";
+import useProblemList from "~/hooks/useProblemList";
 
 // const data2 = Array(10).fill(["2022년도", "1회차", "1-2", "문제 제목 얼레벌레 블라블라", "2022.7.23",])
 
 function Mypage() {
+  const problemList = useProblemList();
   return (
     <article className="Qpage">
       <h2 className="title text-center text-3xl my-12">문제 목록</h2>

@@ -14,6 +14,7 @@ import Qlists from "./pages/qlists/Qlists";
 import Root from "./pages/root/Root";
 import ProfileEdit from "./pages/mypage/profileEdit/ProfileEdit";
 import Footer from "./components/Footer";
+import { Suspense } from "react";
 
 const rootContainer = document.getElementById("root")!;
 
@@ -21,25 +22,27 @@ const root = ReactDOM.createRoot(rootContainer);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Drawer>
-        <Nav />
-        <main>
-          <Routes>
-            <Route path="/" element={<Root />} />
+    <Suspense fallback={<div>loading...</div>}>
+      <BrowserRouter>
+        <Drawer>
+          <Nav />
+          <main>
+            <Routes>
+              <Route path="/" element={<Root />} />
 
-            <Route path="/quizs" element={<Qlists />} />
-            <Route path="/quizs/:quizId" element={<TestForm />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/mypage" element={<Mypage />} />
-            <Route path="/mypage/edit" element={<ProfileEdit />} />
-            {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}
-            <Route path="*" element={<Notfound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </Drawer>
-    </BrowserRouter>
+              <Route path="/quizs" element={<Qlists />} />
+              <Route path="/quizs/:quizId" element={<TestForm />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/mypage" element={<Mypage />} />
+              <Route path="/mypage/edit" element={<ProfileEdit />} />
+              {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}
+              <Route path="*" element={<Notfound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Drawer>
+      </BrowserRouter>
+    </Suspense>
   </React.StrictMode>
 );

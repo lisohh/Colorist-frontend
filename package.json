@@ -9,6 +9,7 @@
     "react-dom": "^18.0.2",
     "react-hook-form": "^7.34.0",
     "react-router-dom": "^6.4.0",
+    "suspend-react": "^0.0.9",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

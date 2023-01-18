@@ -38,3 +38,62 @@ export async function getProblemList() {
 }
 
 // fetch란? Request => Response
+export async function getViews() {
+  return [
+    {
+      rank: 1,
+      problemId: 1,
+      views: 2000,
+    },
+    {
+      rank: 2,
+      problemId: 2,
+      views: 1000,
+    },
+    {
+      rank: 3,
+      problemId: 3,
+      views: 500,
+    },
+    {
+      rank: 4,
+      problemId: 4,
+      views: 250,
+    },
+    {
+      rank: 5,
+      problemId: 5,
+      views: 125,
+    },
+  ];
+}
+
+export async function getSaves() {
+  return [
+    {
+      rank: 1,
+      problemId: 1,
+      saves: 2000,
+    },
+    {
+      rank: 2,
+      problemId: 2,
+      saves: 1000,
+    },
+    {
+      rank: 3,
+      problemId: 3,
+      saves: 500,
+    },
+    {
+      rank: 4,
+      problemId: 4,
+      saves: 250,
+    },
+    {
+      rank: 5,
+      problemId: 5,
+      saves: 125,
+    },
+  ];
+}

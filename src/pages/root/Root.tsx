@@ -158,9 +158,6 @@ function Root() {
                   (problem) => problem.id === problemId
                 );
 
-                const [error, setError] = useState<undefined | Error>(
-                  undefined
-                );
                 invariant(
                   problem,
                   "문제 정보를 찾지 못했습니다. 개발자가 금방 고칠테니 기다려주세요."

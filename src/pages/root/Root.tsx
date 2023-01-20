@@ -1,6 +1,9 @@
+import { invariant } from "@remix-run/router";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "~/components/Carousel";
+import ErrorBoundary from "~/components/ErrorBoundary";
+import Table from "~/components/Table";
 import useProblemList from "~/hooks/useProblemList";
 import useSaves from "~/hooks/useSaves";
 import useViews from "~/hooks/useViews";
@@ -71,6 +74,11 @@ import { shuffle } from "~/utils/array";
 // 고통 받는 개발자를 상상한다! return 을 빼먹지 말자 vs "왜 화면에 아무 것도 안 나오는 거야 ㅠㅠ" => 하지만 return을 빼먹지 않지! (개운!)
 // 광고에서 이런 구조를 많이 사용한다. 광고를 보면 스토리구조를 배울 수 있음! 더 기억 잘나!
 
+// Root -> useViews <- 인터페이스 -> api
+// 어떤 모듈에서 밖에 public하게 공개한 export한 것들 === 그 모듈의 공개 '인터페이스'
+// public? 캡슐화?
+// 내부를 잘 몰라도, 겉에 공개된 것만 보고 쉽게 쓴다~
+
 function Root() {
   const problemList = useProblemList();
   const views = useViews();
@@ -100,36 +108,38 @@ function Root() {
           <h3 className="text-4xl">조회수가 많은 문제 TOP5</h3>
         </div>
         <div className="overflow-x-auto">
-          <table className="table table-purple-zebra w-full">
-            <thead>
-              <tr className="text-center">
-                <th>순위</th>
-                <th>연도</th>
-                <th>회차</th>
-                <th>유형</th>
-                <th>문제 제목</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-              {views.map(({ views, problemId, rank }) => {
+          <ErrorBoundary>
+            <Table
+              headList={["순위", "연도", "회차", "유형", "문제 제목", "조회수"]}
+              dataList={views}
+              getKey={(view) => view.rank}
+              zebra="purple"
+              Row={({ data: { views, problemId, rank } }) => {
                 const problem = problemList.find(
                   (problem) => problem.id === problemId
                 );
+                invariant(
+                  problem,
+                  "문제 정보를 찾지 못했습니다. 개발자가 금방 고칠테니 기다려주세요."
+                );
 
                 return (
-                  <tr key={rank} className="text-center">
+                  <tr className="text-center">
                     <th>{rank}</th>
-                    <td>{problem?.year}</td>
-                    <td>{problem?.round}</td>
-                    <td>{problem?.type}</td>
-                    <td>{problem?.title}</td>
+                    <td>{problem.year}</td>
+                    <td>{problem.round}</td>
+                    <td>{problem.type}</td>
+
+                    <td>
+                      <Link to={`/quizs/${problem.id}`}>{problem.title}</Link>
+                    </td>
+
                     <td>{views}</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          </table>
+              }}
+            />
+          </ErrorBoundary>
         </div>
       </article>
       <article className="flex flex-col justify-center gap-4">
@@ -137,36 +147,40 @@ function Root() {
           <h3 className="text-4xl">저장수가 많은 문제 TOP5</h3>
         </div>
         <div className="overflow-x-auto ">
-          <table className="table table-yellow-zebra w-full ">
-            <thead>
-              <tr className="text-center">
-                <th>순위</th>
-                <th>연도</th>
-                <th>회차</th>
-                <th>유형</th>
-                <th>문제 제목</th>
-                <th>저장수</th>
-              </tr>
-            </thead>
-            <tbody>
-              {saves.map(({ saves, problemId, rank }) => {
+          <ErrorBoundary>
+            <Table
+              headList={["순위", "연도", "회차", "유형", "문제 제목", "저장수"]}
+              dataList={saves}
+              getKey={(save) => save.rank}
+              zebra="yellow"
+              Row={({ data: { saves, problemId, rank } }) => {
                 const problem = problemList.find(
                   (problem) => problem.id === problemId
                 );
 
+                const [error, setError] = useState<undefined | Error>(
+                  undefined
+                );
+                invariant(
+                  problem,
+                  "문제 정보를 찾지 못했습니다. 개발자가 금방 고칠테니 기다려주세요."
+                );
+
                 return (
-                  <tr key={rank} className="text-center">
+                  <tr className="text-center">
                     <th>{rank}</th>
-                    <td>{problem?.year}</td>
-                    <td>{problem?.round}</td>
-                    <td>{problem?.type}</td>
-                    <td>{problem?.title}</td>
+                    <td>{problem.year}</td>
+                    <td>{problem.round}</td>
+                    <td>{problem.type}</td>
+                    <td>
+                      <Link to={`/quizs/${problem.id}`}>{problem.title}</Link>
+                    </td>
                     <td>{saves}</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          </table>
+              }}
+            />
+          </ErrorBoundary>
         </div>
       </article>
     </>

@@ -2,8 +2,8 @@ import React from "react";
 
 function SelectGroup() {
   return (
-    <div className="select-group mb-4">
-      <select className="select w-32 mr-4 pop-box-shadow text-center text-base">
+    <div className="select-group flex flex-row gap-4">
+      <select className="select w-32 pop-box-shadow text-center text-base">
         <option disabled selected>
           2022
         </option>
@@ -11,14 +11,14 @@ function SelectGroup() {
         <option>2020</option>
         <option>2019</option>
       </select>
-      <select className="select w-32 mr-4 pop-box-shadow text-center text-base">
+      <select className="select w-32 pop-box-shadow text-center text-base">
         <option disabled selected>
           1회차
         </option>
         <option>2회차</option>
         <option>3회차</option>
       </select>
-      <select className="select w-40 mr-4 pop-box-shadow text-center text-base">
+      <select className="select w-40 pop-box-shadow text-center text-base">
         <option disabled selected>
           1,2번 유형
         </option>

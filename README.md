@@ -43,12 +43,12 @@ npm start
 
 ## Built With
 
-- React.js - A JavaScript library for building user interfaces<br>
-- React Router - Declarative routing for React<br>
-- Axios - Promise based HTTP client for the browser and node.js<br>
-- Styled Components - Use the best bits of ES6 and CSS to style your apps without stress<br>
-- React Icons - Include popular icons in your React projects easily with react-icons<br>
-- React Toastify - React notification made easy<br>
+- React.js: 컴포넌트 기반 UI 구현, 가상 DOM을 사용한 효율적인 렌더링, 상태 관리 (useState, useContext 등) 등 <br>
+- React Router: 라우팅 기능 구현 (로그인, 회원가입, 프로필 페이지, 색상 팔레트 및 조합 페이지 등)<br>
+- Axios: API 요청 및 응답 처리 (로그인, 회원가입, 프로필 관리, 색상 팔레트 및 조합 CRUD 등)<br>
+- Styled Components: CSS-in-JS 방식의 스타일링 (컴포넌트 기반 스타일링, ThemeProvider 사용 등)<br>
+- React Icons: 다양한 아이콘 사용 (로그인, 회원가입, 검색 등)<br>
+- React Toastify: 토스트 메시지 기능 구현 (로그인, 회원가입, 색상 팔레트 및 조합 CRUD 등)
 
 ## Authors
 

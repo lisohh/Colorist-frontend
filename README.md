@@ -33,6 +33,14 @@ npm start
 
 4. 브라우저에서 http://localhost:3000으로 접속하여 Colorist를 사용할 수 있습니다.
 
+## 구현한 기능 
+
+- 로그인 및 회원가입 기능
+- 사용자 프로필 관리 기능 (프로필 이미지 업로드 등)
+- 색상 선택 기능 (색상 팔레트 및 HEX 코드 입력)
+- 색상 조합 추천 기능 (색상 팔레트 및 색상 조합 저장 및 불러오기)
+- 다른 사용자가 만든 색상 팔레트 및 조합 검색 기능
+
 ## Built With
 
 - React.js - A JavaScript library for building user interfaces<br>

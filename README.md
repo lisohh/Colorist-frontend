@@ -35,12 +35,12 @@ npm start
 
 ## Built With
 
-- React.js - A JavaScript library for building user interfaces
-- React Router - Declarative routing for React
-- Axios - Promise based HTTP client for the browser and node.js
-- Styled Components - Use the best bits of ES6 and CSS to style your apps without stress
-- React Icons - Include popular icons in your React projects easily with react-icons
-- React Toastify - React notification made easy
+- React.js - A JavaScript library for building user interfaces<br>
+- React Router - Declarative routing for React<br>
+- Axios - Promise based HTTP client for the browser and node.js<br>
+- Styled Components - Use the best bits of ES6 and CSS to style your apps without stress<br>
+- React Icons - Include popular icons in your React projects easily with react-icons<br>
+- React Toastify - React notification made easy<br>
 
 ## Authors
 

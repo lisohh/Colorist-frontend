@@ -12,14 +12,12 @@ Node.js가 설치되어 있어야 합니다.
 1. 이 레포지토리를 클론합니다.
 
 ```bash
-Copy code
 git clone https://github.com/lisohh/Colorist-frontend.git
 ```
 
 2. 프로젝트 폴더로 이동한 후, 의존성 패키지를 설치합니다.
 
 ```bash
-Copy code
 cd Colorist-frontend
 npm install
 ```
@@ -27,7 +25,6 @@ npm install
 3. 프로젝트를 실행합니다.
 
 ```sql
-Copy code
 npm start
 ```
 
